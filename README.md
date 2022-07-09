@@ -12,6 +12,7 @@ git clone git@github.com:Queenstown-praktikum/imadjinarium.git
 5) `npm run lint:fix` - исправление eslint
 6) `npm run stylelint` - проверка stylelint
 7) `npm run stylelint:fix` - исправление stylelint
+7) `npm run format` - запускает prettier
 
 В проекте подключена `husky`, на `pre-commit` запускает `lint-staged`:
 
