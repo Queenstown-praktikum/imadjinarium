@@ -3,15 +3,15 @@ import './landing.scss';
 
 export const LandingPage: FC = () => (
   <main className='landing fullscreen'>
-    <h1 className='title'>Имаджинариум</h1>
-    <article className='info'>
-      <section>
+    <h1 className='landing__title'>Имаджинариум</h1>
+    <article className='landing-info'>
+      <section className='landing-info__item'>
         <h3>Цель игры</h3>
         <p>
           Опередить соперников и набрать наибольшее количество очков, получить удовольствие и узнать лучше своих друзей.
         </p>
       </section>
-      <section>
+      <section className='landing-info__item'>
         <h3>Ход игры</h3>
         <p>
           Ведущий рассматривает карточки. Из них он выбирает ту, которая вызвала у него самую интересную ассоциацию
@@ -28,7 +28,7 @@ export const LandingPage: FC = () => (
           команде таблички переворачивают. Происходит подсчёт очков. [Todo: edit]
         </p>
       </section>
-      <section>
+      <section className='landing-info__item'>
         <h3>Определение количества баллов</h3>
 
         <h4>Перемещение игроков</h4>
@@ -46,7 +46,7 @@ export const LandingPage: FC = () => (
         <p>Если карту ведущего угадали все игроки, или, наоборот, никто – ведущий не получает очков.</p>
       </section>
     </article>
-    <button className='play' type='button'>
+    <button className='landing-play-button' type='button'>
       Играть
     </button>
   </main>
