@@ -1,17 +1,18 @@
 import React, { FC } from 'react';
-import './landing.scss';
+import cn from 'classnames';
+import styles from './landing.scss';
 
 export const LandingPage: FC = () => (
-  <main className='landing fullscreen'>
-    <h1 className='landing__title'>Имаджинариум</h1>
-    <article className='landing-info'>
-      <section className='landing-info__item'>
+  <main className={cn(styles.landing, 'fullscreen')}>
+    <h1 className={styles.landing__title}>Имаджинариум</h1>
+    <article>
+      <section className={styles['landing-info__item']}>
         <h3>Цель игры</h3>
         <p>
           Опередить соперников и набрать наибольшее количество очков, получить удовольствие и узнать лучше своих друзей.
         </p>
       </section>
-      <section className='landing-info__item'>
+      <section className={styles['landing-info__item']}>
         <h3>Ход игры</h3>
         <p>
           Ведущий рассматривает карточки. Из них он выбирает ту, которая вызвала у него самую интересную ассоциацию
@@ -28,7 +29,7 @@ export const LandingPage: FC = () => (
           команде таблички переворачивают. Происходит подсчёт очков. [Todo: edit]
         </p>
       </section>
-      <section className='landing-info__item'>
+      <section className={styles['landing-info__item']}>
         <h3>Определение количества баллов</h3>
 
         <h4>Перемещение игроков</h4>
@@ -46,7 +47,7 @@ export const LandingPage: FC = () => (
         <p>Если карту ведущего угадали все игроки, или, наоборот, никто – ведущий не получает очков.</p>
       </section>
     </article>
-    <button className='landing-play-button' type='button'>
+    <button className={styles['landing-play-button']} type='button'>
       Играть
     </button>
   </main>

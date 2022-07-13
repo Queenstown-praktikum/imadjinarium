@@ -6,11 +6,11 @@ html {
 	color: var(--color-black-light);
 }
 
-.fullscreen {
+:global(.fullscreen) {
 	height: 100vh;
 }
 
-.centered {
+:global(.centered) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
