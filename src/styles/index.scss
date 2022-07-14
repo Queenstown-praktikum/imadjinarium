@@ -1,0 +1,19 @@
+@import "reset";
+@import "variables";
+
+html {
+	font-family: "'Roboto'", sans-serif;
+	color: var(--color-black-light);
+}
+
+:global(.fullscreen) {
+	height: 100vh;
+}
+
+:global(.centered) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+

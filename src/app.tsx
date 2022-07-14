@@ -1,13 +1,11 @@
-import './style.scss';
-import React from 'react';
+import './styles/index.scss';
+import React, { FC } from 'react';
+import { LandingPage } from './pages/landing/landing.page';
+import { Page404 } from './pages/404/404.page';
 
-function Title() {
-  return <div className='title'>TITLE</div>;
-}
-
-export const App = () => (
+export const App: FC = () => (
   <>
-    <Title />
-    <div>Hello word</div>
+    <LandingPage />
+    <Page404 />
   </>
 );
