@@ -4,8 +4,8 @@
   "description": "Game Imadjinarium, training project yandex practicum",
   "main": "index.tsx",
   "scripts": {
-    "start:dev": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
-    "start:build": "webpack --config ./webpackConfig/webpack.prod.conf.js",
+    "start": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
+    "build": "webpack --config ./webpackConfig/webpack.prod.conf.js",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint src/**/*.{css,scss}",
@@ -58,6 +58,7 @@
     "lint-staged": "13.0.3",
     "mini-css-extract-plugin": "2.6.1",
     "prettier": "2.7.1",
+    "redux-logger": "3.0.6",
     "sass": "1.53.0",
     "sass-loader": "13.0.2",
     "style-loader": "3.3.1",
@@ -74,10 +75,15 @@
     "webpack-merge": "5.8.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "1.8.3",
+    "@types/redux-logger": "3.0.9",
+    "axios": "0.27.2",
     "classnames": "2.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-redux": "8.0.2",
     "react-router": "6.3.0",
-    "react-router-dom": "6.3.0"
+    "react-router-dom": "6.3.0",
+    "redux-saga": "1.1.3"
   }
 }

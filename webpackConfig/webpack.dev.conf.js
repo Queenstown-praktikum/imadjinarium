@@ -8,6 +8,7 @@ const baseWebpackConfig = require('./webpack.base.conf');
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.resolve(__dirname, '../dist'),
     },

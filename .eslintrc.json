@@ -33,7 +33,9 @@
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "react/function-component-definition": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
+    "import/no-unresolved": 0,
+    "no-param-reassign": ["error", { "props": false }]
   },
   "settings": {
     "import/resolver": {

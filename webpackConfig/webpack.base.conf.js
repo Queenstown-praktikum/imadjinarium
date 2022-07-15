@@ -18,6 +18,7 @@ module.exports = {
   output: {
     filename: 'main-[hash:4].js',
     path: _path('../dist'),
+    publicPath: "/",
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.css', '.scss'],
@@ -56,6 +57,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: _path('../public/index.html'),
+      favicon: _path("../public/favicon.ico"),
     }),
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
