@@ -9,7 +9,7 @@ export const Layout: FC = () => (
   <div className={styles.layout}>
     <header className={styles.layout__header}>
       <h1>Имаджинариум</h1>
-      <Navbar links={['/', 'landing', 'sign-in', 'sign-up', 'forum', 'leaderboard']} />
+      <Navbar links={['/', 'sign-in', 'sign-up', 'forum', 'leaderboard']} />
     </header>
     <main className={styles.layout__content}>
       <Outlet />
