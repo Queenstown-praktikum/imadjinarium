@@ -1,10 +1,8 @@
 import React, { FC } from 'react';
-import cn from 'classnames';
 import styles from './landing.scss';
 
 export const LandingPage: FC = () => (
-  <main className={cn(styles.landing, 'fullscreen')}>
-    <h1 className={styles.landing__title}>Имаджинариум</h1>
+  <main className={styles.landing}>
     <article>
       <section className={styles['landing-info__item']}>
         <h3>Цель игры</h3>
