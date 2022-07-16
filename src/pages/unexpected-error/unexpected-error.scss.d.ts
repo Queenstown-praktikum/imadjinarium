@@ -2,6 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'unexpected-error': string;
+  'unexpected-error__button': string;
   'unexpected-error__subtitle': string;
   'unexpected-error__title': string;
 }

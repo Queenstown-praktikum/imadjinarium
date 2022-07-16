@@ -9,7 +9,7 @@ import { Page404 } from './src/pages/404/404.page';
 import { Layout } from './src/pages/layout/layout';
 import { SignInPage } from './src/pages/sign-in/sign-in.page';
 import { SignUpPage } from './src/pages/sign-up/sign-up.page';
-import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error';
+import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error.page';
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',
