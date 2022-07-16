@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
     "start:build": "webpack --config ./webpackConfig/webpack.prod.conf.js",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint src/**/*.{css,scss}",
     "stylelint:fix": "stylelint --fix src/**/*.{css,scss}",
