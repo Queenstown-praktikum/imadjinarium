@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SentryRRWeb from '@sentry/rrweb';
 import { LandingPage } from './src/pages/landing/landing.page';
 import { Page404 } from './src/pages/404/404.page';
 import { Layout } from './src/pages/layout/layout';
@@ -12,7 +13,7 @@ import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-err
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',
-  integrations: [new BrowserTracing()],
+  integrations: [new BrowserTracing(), new SentryRRWeb({})],
 
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
@@ -23,7 +24,7 @@ Sentry.init({
 // @ts-ignore
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Sentry.ErrorBoundary fallback={<UnexpectedErrorPage />}>
+  <Sentry.ErrorBoundary showDialog fallback={<UnexpectedErrorPage />}>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />}>
