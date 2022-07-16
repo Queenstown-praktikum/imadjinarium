@@ -33,8 +33,31 @@
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "react/function-component-definition": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.stories.*",
+          "**/.storybook/**/*.*"
+        ],
+        "peerDependencies": true
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {}
+    ]
   },
+  "overrides": [
+    {
+      "files": ["*.stories.tsx"],
+      "rules": {
+        "no-unused-vars": "off",
+        "react/jsx-props-no-spreading": "off"
+      }
+    }
+  ],
   "settings": {
     "import/resolver": {
       "typescript": {}

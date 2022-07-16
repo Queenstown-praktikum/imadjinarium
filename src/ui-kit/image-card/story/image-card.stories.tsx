@@ -5,7 +5,7 @@ import { ImageCard } from '../image-card';
 type Props = ComponentProps<typeof ImageCard>;
 
 export default {
-  title: 'Example/ImageCard',
+  title: 'Common/ImageCard',
   component: ImageCard,
   parameters: {
     layout: 'centered',
