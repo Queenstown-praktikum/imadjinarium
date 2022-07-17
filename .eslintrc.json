@@ -33,6 +33,9 @@
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "react/function-component-definition": "off",
+    "react/require-default-props": ["error", {
+      "ignoreFunctionalComponents": true
+    }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
     "import/no-extraneous-dependencies": [
       "error",

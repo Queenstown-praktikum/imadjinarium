@@ -16,14 +16,20 @@ export default {
     },
   },
   decorators: [withDesign],
+  args: {
+    imageUrl: 'https://papik.pro/uploads/posts/2021-09/1631229101_2-papik-pro-p-imadzhinarium-illyustratsii-2.jpg',
+  },
 } as ComponentMeta<typeof ImageCard>;
 
 const Template: ComponentStory<typeof ImageCard> = (args) => <ImageCard {...args} />;
 
-export const Variant1 = Template.bind({});
-Variant1.args = {
-  caption: 'Вариант 1',
-};
+export const Default = Template.bind({});
 
-export const Variant2 = Template.bind({});
-Variant2.args = { caption: 'Вариант 2' };
+export const WithCaption = Template.bind({});
+WithCaption.args = { caption: 'Ваша карта' };
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  labelUrl: 'https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg',
+  caption: 'Дмитрий',
+};

@@ -2,6 +2,8 @@
 // Please do not change this file!
 interface CssExports {
   'image-card': string;
+  'image-card__caption': string;
+  'image-card__label': string;
 }
 export const cssExports: CssExports;
 export default cssExports;
