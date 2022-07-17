@@ -33,7 +33,17 @@
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "react/function-component-definition": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
+    "@typescript-eslint/no-unused-vars": [
+      2,
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "vars": "all",
+        "varsIgnorePattern": ",^_"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
