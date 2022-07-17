@@ -7,7 +7,7 @@ import { Page404 } from './src/pages/404/404.page';
 import { Layout } from './src/pages/layout/layout';
 import { SignInPage } from './src/pages/sign-in/sign-in.page';
 import { SignUpPage } from './src/pages/sign-up/sign-up.page';
-import store from './src/store'
+import { store } from './src/redux/store'
 
 // @ts-ignore
 const root = ReactDOM.createRoot(document.getElementById('root'));
