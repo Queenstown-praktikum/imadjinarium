@@ -23,7 +23,12 @@ module.exports = {
             sourceMap: true,
           },
         },
-        { loader: 'sass-loader' },
+        {
+          loader: 'sass-loader',
+          options: {
+            additionalData: '@import "src/styles/index";',
+          },
+        },
       ],
     });
 
