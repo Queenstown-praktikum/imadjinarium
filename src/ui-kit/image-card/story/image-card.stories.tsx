@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { ComponentProps } from 'react';
+import { withDesign } from 'storybook-addon-designs';
 import { ImageCard } from '../image-card';
 
 type Props = ComponentProps<typeof ImageCard>;
@@ -14,6 +15,7 @@ export default {
       url: 'https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1',
     },
   },
+  decorators: [withDesign],
 } as ComponentMeta<typeof ImageCard>;
 
 const Template: ComponentStory<typeof ImageCard> = (args) => <ImageCard {...args} />;
