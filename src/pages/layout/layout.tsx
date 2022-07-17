@@ -1,7 +1,7 @@
 import '../../styles/index.scss';
 import React, { FC } from 'react';
 import { Outlet } from 'react-router';
-import { Navbar } from '../../components/navbar/navbar';
+import { Navbar } from '../../ui-kit/navbar/navbar';
 
 import styles from './layout.scss';
 
