@@ -15,7 +15,14 @@ export default {
       url: 'https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1',
     },
   },
-  decorators: [withDesign],
+  decorators: [
+    withDesign,
+    (Story) => (
+      <div style={{ width: '300px', height: '450px' }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     imageUrl: 'https://papik.pro/uploads/posts/2021-09/1631229101_2-papik-pro-p-imadzhinarium-illyustratsii-2.jpg',
   },
