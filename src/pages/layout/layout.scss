@@ -16,8 +16,4 @@
     align-items: center;
     margin-bottom: 50px;
   }
-
-  &__content {
-    height: calc(100vh - (var(--layout-header-height) + var(--layout-padding) + var(--layout-header-margin-bottom)));
-  }
 }
