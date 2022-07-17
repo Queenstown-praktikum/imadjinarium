@@ -1,26 +1,26 @@
 body, ul, li, h1, h2, h3, h4, h5, h6, p {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 ul, li {
-	display: block;
+  display: block;
 }
 
-h1, h2, h3, h4, h5, h6, ul, li, div, section, form, input, button, span, p, img, a, textarea, nav {
-	box-sizing: border-box;
+h1, h2, h3, h4, h5, h6, ul, li, div, section, form, input, button, span, p, img, a, textarea, nav, main {
+  box-sizing: border-box;
 }
 
 a, a:hover, a:active, a:focus {
-	text-decoration:none;
+  text-decoration:none;
 }
 
 input:active, input:hover, input:focus {
-	outline: none;
-	outline-offset: 0;
+  outline: none;
+  outline-offset: 0;
 }
 
 button:active, button:hover, button:focus {
-	outline: none;
-	outline-offset: 0;
+  outline: none;
+  outline-offset: 0;
 }
