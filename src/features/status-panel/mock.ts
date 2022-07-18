@@ -1,8 +1,8 @@
-import { ItemStatusProps } from './types';
+import { ItemStatusProps, LeaderUserId } from './types';
 
 type IdItem = number;
 
-export const mockData: Record<IdItem, ItemStatusProps> = {
+export const mockData: Record<IdItem, ItemStatusProps | LeaderUserId> = {
   0: {
     id: 0,
     name: 'Иван',

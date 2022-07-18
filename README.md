@@ -22,3 +22,7 @@ git clone git@github.com:Queenstown-praktikum/imadjinarium.git
     "src/**/*.(css|sass|scss)": "stylelint --fix"
   }
 ```
+
+### Принятые договоренности
+1) Умные компоненты храним в папке `Features`
+2) Components, Feature, Pages ... экспортируем из осмысленно наименованных файлов, не из `index.tsx`
