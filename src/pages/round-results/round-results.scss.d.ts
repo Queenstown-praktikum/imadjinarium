@@ -5,6 +5,7 @@ interface CssExports {
   'round-results__card': string;
   'round-results__card_primary': string;
   'round-results__cards': string;
+  'round-results__leading-block': string;
   'round-results__title': string;
 }
 export const cssExports: CssExports;

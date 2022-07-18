@@ -30,4 +30,8 @@
       height: calc(var(--round-results-card-height) * 2);
     }
   }
+
+  &__leading-block {
+    margin-top: 50px;
+  }
 }

@@ -2,10 +2,14 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 import styles from './round-results.scss';
 import { ImageCard } from '../../ui-kit/image-card/image-card';
+import { LeadingBlock } from './leading-block/leading-block';
 
 export const RoundResultsPage: FC = () => (
   <div className={cn(styles['round-results'], 'fullscreen', 'centered')}>
     <h2 className={styles['round-results__title']}>Результаты хода</h2>
+    <div className={styles['round-results__leading-block']}>
+      <LeadingBlock name='Аркадий' association='выхухоль' />
+    </div>
     <ul className={styles['round-results__cards']}>
       <li className={cn(styles['round-results__card'], styles['round-results__card_primary'])}>
         <ImageCard
