@@ -9,7 +9,19 @@ export const Layout: FC = () => (
   <div className={styles.layout}>
     <header className={styles.layout__header}>
       <h1>Имаджинариум</h1>
-      <Navbar links={['/', 'sign-in', 'sign-up', 'player-selection', 'round-results', 'forum', 'leaderboard']} />
+      <Navbar
+        links={[
+          '/',
+          'sign-in',
+          'sign-up',
+          'player-selection',
+          'round-intro-leading',
+          'round-intro-player',
+          'round-results',
+          'forum',
+          'leaderboard',
+        ]}
+      />
     </header>
     <main>
       <Outlet />

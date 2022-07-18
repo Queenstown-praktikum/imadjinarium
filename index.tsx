@@ -12,6 +12,7 @@ import { SignUpPage } from './src/pages/sign-up/sign-up.page';
 import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error.page';
 import { PlayerSelectionPage } from './src/pages/player-selection/player-selection.page';
 import { RoundResultsPage } from './src/pages/round-results/round-results.page';
+import { RoundIntroPage } from './src/pages/round-intro/round-intro.page';
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',
@@ -34,6 +35,14 @@ root.render(
           <Route path='sign-in' element={<SignInPage />} />
           <Route path='sign-up' element={<SignUpPage />} />
           <Route path='player-selection' element={<PlayerSelectionPage />} />
+          <Route
+            path='round-intro-leading'
+            element={<RoundIntroPage rounds={{ current: 1, all: 3 }} userRole='leading' />}
+          />
+          <Route
+            path='round-intro-player'
+            element={<RoundIntroPage rounds={{ current: 2, all: 3 }} userRole='player' />}
+          />
           <Route path='round-results' element={<RoundResultsPage />} />
           <Route path='*' element={<Page404 />} />
         </Route>
