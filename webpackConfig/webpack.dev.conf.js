@@ -8,6 +8,7 @@ const baseWebpackConfig = require('./webpack.base.conf');
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.resolve(__dirname, '../dist'),
     },
@@ -23,8 +24,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
   },
   plugins: [],
-})
+});
 
 module.exports = new Promise((resolve, reject) => {
-  resolve(devWebpackConfig)
+  resolve(devWebpackConfig);
 });
