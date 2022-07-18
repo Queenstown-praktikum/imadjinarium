@@ -27,8 +27,15 @@ git clone git@github.com:Queenstown-praktikum/imadjinarium.git
 
 ### Принятые договоренности
 1) Git
+    
+    `master` - главная ветка, от нее создаем ветки спринтов, по окончанию задач спринта вливаем в `master`
+
+    `sprint_№` - ветка спринта от нее создаем задачи и в нее же их мерджим
+
    - Фичи `feature/issues-№` 
    - Баги `bagfix/issues-№`
    - Коммиты `issues №: ....`
-2) Умные компоненты храним в папке `Features`
-3) Components, Feature, Pages ... экспортируем из осмысленно наименованных файлов, не из `index.tsx`
+   
+
+3) Умные компоненты храним в папке `Features`
+4) Components, Feature, Pages ... экспортируем из осмысленно наименованных файлов, не из `index.tsx`
