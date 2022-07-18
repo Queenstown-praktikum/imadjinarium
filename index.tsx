@@ -10,6 +10,7 @@ import { Layout } from './src/pages/layout/layout';
 import { SignInPage } from './src/pages/sign-in/sign-in.page';
 import { SignUpPage } from './src/pages/sign-up/sign-up.page';
 import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error.page';
+import { PlayerSelectionPage } from './src/pages/player-selection/player-selection.page';
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',
@@ -31,6 +32,7 @@ root.render(
           <Route index element={<LandingPage />} />
           <Route path='sign-in' element={<SignInPage />} />
           <Route path='sign-up' element={<SignUpPage />} />
+          <Route path='player-selection' element={<PlayerSelectionPage />} />
           <Route path='*' element={<Page404 />} />
         </Route>
       </Routes>

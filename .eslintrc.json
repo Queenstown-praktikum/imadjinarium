@@ -33,7 +33,24 @@
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "react/function-component-definition": "off",
+    "react/require-default-props": ["error", {
+      "ignoreFunctionalComponents": true
+    }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.stories.*",
+          "**/.storybook/**/*.*"
+        ],
+        "peerDependencies": true
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {}
+    ],
     "@typescript-eslint/no-unused-vars": [
       2,
       {
@@ -45,6 +62,15 @@
       }
     ]
   },
+  "overrides": [
+    {
+      "files": ["*.stories.tsx"],
+      "rules": {
+        "no-unused-vars": "off",
+        "react/jsx-props-no-spreading": "off"
+      }
+    }
+  ],
   "settings": {
     "import/resolver": {
       "typescript": {}

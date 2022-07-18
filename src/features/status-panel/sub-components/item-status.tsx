@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 import styles from '../status-panel.scss';
 import { ItemStatusProps, LeaderUserId, StatusProps } from '../types';
-import { Preloader } from '../../../components/preloader';
 import { CheckedIcon } from '../../../icons';
+import { Preloader } from '../../../ui-kit/preloader';
 
 const renderIcon = (stats: StatusProps) => {
   switch (stats) {

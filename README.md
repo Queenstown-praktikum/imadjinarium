@@ -12,7 +12,9 @@ git clone git@github.com:Queenstown-praktikum/imadjinarium.git
 5) `npm run lint:fix` - исправление eslint
 6) `npm run stylelint` - проверка stylelint
 7) `npm run stylelint:fix` - исправление stylelint
-7) `npm run format` - запускает prettier
+8) `npm run format` - запускает prettier
+9) `npm run storybook` - запускает storybook
+9) `npm run build-storybook` - сборка storybook
 
 В проекте подключена `husky`, на `pre-commit` запускает `lint-staged`:
 
@@ -24,5 +26,9 @@ git clone git@github.com:Queenstown-praktikum/imadjinarium.git
 ```
 
 ### Принятые договоренности
-1) Умные компоненты храним в папке `Features`
-2) Components, Feature, Pages ... экспортируем из осмысленно наименованных файлов, не из `index.tsx`
+1) Git
+   - Фичи `feature/issues-№` 
+   - Баги `bagfix/issues-№`
+   - Коммиты `issues №: ....`
+2) Умные компоненты храним в папке `Features`
+3) Components, Feature, Pages ... экспортируем из осмысленно наименованных файлов, не из `index.tsx`
