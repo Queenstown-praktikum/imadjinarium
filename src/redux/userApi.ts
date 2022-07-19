@@ -31,7 +31,7 @@ export const userApi = createApi({
       }),
       invalidatesTags: () => [{ type: userTagType, id: userTagType }],
     }),
-    postUserLogout: build.mutation({
+    logout: build.mutation({
       query: () => ({
         url: '/auth/logout',
         method: 'POST',
@@ -45,5 +45,5 @@ export const {
   useGetUserQuery,
   useUserSignInMutation,
   useUserSignUpMutation,
-  usePostUserLogoutMutation,
+  useLogoutMutation,
 } = userApi

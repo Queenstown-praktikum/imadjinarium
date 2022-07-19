@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from 'react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router';
-import { usePostUserLogoutMutation, useUserSignInMutation } from '../../redux/userApi';
+import { useLogoutMutation, useUserSignInMutation } from '../../redux/userApi';
 
 export const SignInPage: FC = () => {
   const [signInUser, { isError, isLoading, error }] = useUserSignInMutation()
-  const [logoutUser, { data }] = usePostUserLogoutMutation()
+  const [logoutUser, { data }] = useLogoutMutation()
   const navigate = useNavigate();
 
   const handleSignInUser = async () => {
