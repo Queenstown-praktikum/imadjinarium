@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react';
 import cn from 'classnames';
 import styles from './forum.scss';
-import { Search } from './sub-components/search';
+import { Search } from './sub-components/search/search';
 import { DataTheme, DataThemeComments } from './mock';
-import { ItemTheme } from './sub-components/item-theme';
+import { ItemTheme } from './sub-components/item-theme/item-theme';
 import { DataPropsItem, IdItemTheme } from './types';
-import { Button } from '../../components/button';
 import { WindowsComments } from './windows-comments';
+import { Button } from '../../ui-kit/button/button';
 
 export const Forum: FC = () => {
   const [dataTheme] = useState<Record<IdItemTheme, DataPropsItem>>(DataTheme);

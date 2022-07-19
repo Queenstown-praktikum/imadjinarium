@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: 30fr 70fr;
   padding-bottom: 20px;
+  overflow: hidden;
+  height: calc(100vh - ((var(--layout-padding) + var(--layout-header-height) + var(--layout-header-margin-bottom))));
 
   &__left {
     height: 100%;
