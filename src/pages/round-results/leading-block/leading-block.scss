@@ -16,5 +16,13 @@
     line-height: 20px;
     color: var(--color-white);
     background-color: var(--color-blue-light);
+
+    &_wide {
+      width: 100%;
+    }
+
+    &_narrow {
+      width: fit-content;
+    }
   }
 }
