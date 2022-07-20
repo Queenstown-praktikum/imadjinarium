@@ -26,7 +26,7 @@ export const Forum: FC = () => {
       <div className={cn(styles.forum__left)}>
         <Button onClick={createTheme}>Создать тему</Button>
         <div className={cn(styles['forum__wrapper-search'])}>
-          <Search placeholder='Поиск по темам' />
+          <Search type='search' placeholder='Поиск по темам' />
         </div>
 
         <div className={cn(styles.forum__themes)}>
