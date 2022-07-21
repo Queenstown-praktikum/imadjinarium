@@ -13,6 +13,7 @@ import { SignUpPage } from './src/pages/sign-up/sign-up.page';
 import { store } from './src/redux/store'
 import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error.page';
 import { PlayerSelectionPage } from './src/pages/player-selection/player-selection.page';
+import { Forum } from './src/pages/forum/forum';
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',
@@ -24,8 +25,7 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-// @ts-ignore
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <Sentry.ErrorBoundary showDialog fallback={<UnexpectedErrorPage />}>
     <Provider store={store}>
@@ -35,6 +35,7 @@ root.render(
             <Route index element={<LandingPage />} />
             <Route path='sign-in' element={<SignInPage />} />
             <Route path='sign-up' element={<SignUpPage />} />
+            <Route path='forum' element={<Forum />} />
             <Route path='player-selection' element={<PlayerSelectionPage />} />
             <Route path='*' element={<Page404 />} />
           </Route>
