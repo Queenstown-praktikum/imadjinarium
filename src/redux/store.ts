@@ -1,12 +1,14 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { createLogger } from 'redux-logger';
+import { userReducer } from './slices/user';
+// import { createLogger } from 'redux-logger';
 import { userApi } from './userApi'
 
 const reducer = combineReducers({
-  [userApi.reducerPath]: userApi.reducer
+  [userApi.reducerPath]: userApi.reducer,
+  user: userReducer
 })
 
-const loggerMiddleware = createLogger();
+// const loggerMiddleware = createLogger();
 
 export const store = configureStore({
   reducer,
@@ -15,8 +17,9 @@ export const store = configureStore({
       serializableCheck: false,
     })
     .concat(userApi.middleware)
-    .concat(loggerMiddleware)
+    // .concat(loggerMiddleware)
   )
 })
 
+export type ApplicationState = ReturnType<typeof reducer>;
 export type AppDispatch = typeof store.dispatch;
