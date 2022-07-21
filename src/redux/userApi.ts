@@ -27,13 +27,7 @@ export const userApi = createApi({
           return response.json()
         },
       }),
-      invalidatesTags: (result) => {
-        console.log('check result:', result)
-        if (result) {
-          return [{ type: userTagType }]
-        }
-        return []
-      }
+      invalidatesTags: (result) => result ? [{ type: userTagType }] : []
     }),
     userSignUp: build.mutation({
       query: (body) => ({
