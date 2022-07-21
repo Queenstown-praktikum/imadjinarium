@@ -1,36 +1,66 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router';
-import { useLogoutMutation, useUserSignInMutation } from '../../redux/userApi';
+import { useUserSignInMutation } from '../../redux/userApi';
+import { FormWrapper, TextField } from '../../components';
+import { WrapperButtonType } from '../../components/formWrapper/types';
 
 export const SignInPage: FC = () => {
-  const [signInUser, { isError, isLoading, error }] = useUserSignInMutation()
-  const [logoutUser, { data }] = useLogoutMutation()
+  const [signInUser, { data, isError, error }] = useUserSignInMutation()
+  const [loginData, setLoginData] = useState({login: '', password: ''})
   const navigate = useNavigate();
 
-  const handleSignInUser = async () => {
-    await signInUser({
-      login: 'uuu',
-      password: '123',
-    }).unwrap()
-  }
-
-  const handleLogoutUser = async () => {
-    await logoutUser({}).unwrap()
-  }
 
   useEffect(() => {
-    if (data) {
-      navigate('sign-in')
+    if (data === 'OK') {
+      navigate('/')
     }
   }, [data, navigate])
 
+  const handleSignInUser = async () => {
+    await signInUser(loginData)
+  }
+
+  const setLoginField = useCallback((name: string, value: string) => {
+    setLoginData({
+      ...loginData,
+      [name]: value
+    })
+  }, [loginData, setLoginData])
+
+  const buttons: WrapperButtonType[] = [{
+    styleType: 'main',
+    label: 'Авторизоватся',
+    action: handleSignInUser,
+  }, {
+    styleType: 'secondary',
+    label: 'Нет аккаунта?',
+    action: () => navigate('/sign-up'),
+  }]
+
   return <div className={cn('fullscreen', 'centered')}>
-    <h2>SignInPage</h2>
-    <button type='button' onClick={handleSignInUser}>try to login with default creds</button>
-    <button type='button' onClick={handleLogoutUser}>logout</button>
-    {/* @ts-ignore */}
-    {isError && error?.data?.reason}
-    {isLoading && 'Loading...'}
+    <FormWrapper
+      title="Вход"
+      buttons={buttons}
+      // TODO(Egor) типизировать ошибки в userApi (пока не знаю как)
+      // и локализовать ошибки (пока на англ)
+      // @ts-ignore
+      formError={isError && error?.data?.reason}
+    >
+      <>
+        <TextField
+          name="login"
+          label="Логин"
+          onTextFieldChange={setLoginField}
+        />
+
+        <TextField
+          name="password"
+          label="Пароль"
+          type='password'
+          onTextFieldChange={setLoginField}
+        />
+      </>
+    </FormWrapper>
   </div>
 };
