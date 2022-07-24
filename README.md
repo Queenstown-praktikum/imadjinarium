@@ -37,5 +37,6 @@ git clone git@github.com:Queenstown-praktikum/imadjinarium.git
    - Коммиты `issues №: ....`
    
 
+
 3) Умные компоненты храним в папке `Features`
 4) Components, Feature, Pages ... экспортируем из осмысленно наименованных файлов, не из `index.tsx`
