@@ -1,0 +1,43 @@
+.lb {
+  &_row {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #000;
+    padding: 5px 10px;
+  }
+
+  &_block {
+    display: flex;
+    align-items: center;
+  }
+
+  &_avatar {
+    height: 40px;
+    width: 40px;
+    background: #afafaf;
+    border-radius: 50%;
+    border: none;
+
+    &[src=''] {
+      content:url("data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==");
+    }
+  }
+
+  &_login {
+    margin-left: 15px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+  }
+
+  &_score {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
