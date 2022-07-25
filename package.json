@@ -4,7 +4,8 @@
   "description": "Game Imadjinarium, training project yandex practicum",
   "main": "index.tsx",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
+    "start": "npm run build && node ./server/server.ts",
+    "start:dev": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
     "build": "webpack --config ./webpackConfig/webpack.prod.conf.js",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
