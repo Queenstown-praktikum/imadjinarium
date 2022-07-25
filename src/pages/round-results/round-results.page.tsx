@@ -8,7 +8,7 @@ export const RoundResultsPage: FC = () => (
   <div className={cn(styles['round-results'], 'fullscreen', 'centered')}>
     <h2 className={styles['round-results__title']}>Результаты хода</h2>
     <div className={styles['round-results__leading-block']}>
-      <LeadingBlock name='Аркадий' association='выхухоль' />
+      <LeadingBlock name='Аркадий' association={{ displayType: 'wide', text: 'выхухоль' }} />
     </div>
     <ul className={styles['round-results__cards']}>
       <li className={cn(styles['round-results__card'], styles['round-results__card_primary'])}>

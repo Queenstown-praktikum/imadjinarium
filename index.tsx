@@ -14,6 +14,7 @@ import { store } from './src/redux/store'
 import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error.page';
 import { PlayerSelectionPage } from './src/pages/player-selection/player-selection.page';
 import { RoundResultsPage } from './src/pages/round-results/round-results.page';
+import { RoundIntroPage } from './src/pages/round-intro/round-intro.page';
 import { Forum } from './src/pages/forum/forum';
 
 Sentry.init({
@@ -38,7 +39,15 @@ root.render(
             <Route path='sign-up' element={<SignUpPage />} />
             <Route path='forum' element={<Forum />} />
             <Route path='player-selection' element={<PlayerSelectionPage />} />
-            <Route path='round-results' element={<RoundResultsPage />} />
+            <Route
+            path='round-intro-leading'
+            element={<RoundIntroPage rounds={{ current: 1, all: 3 }} userRole='leading' />}
+          />
+          <Route
+            path='round-intro-player'
+            element={<RoundIntroPage rounds={{ current: 2, all: 3 }} userRole='player' />}
+          />
+          <Route path='round-results' element={<RoundResultsPage />} />
           <Route path='*' element={<Page404 />} />
           </Route>
         </Routes>
