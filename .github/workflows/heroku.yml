@@ -15,3 +15,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "imadjinarium" #Must be unique in Heroku
           heroku_email: "drozdov.dn29@gmail.com"
+          branch: "deploy"
