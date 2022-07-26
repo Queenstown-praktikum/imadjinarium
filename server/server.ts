@@ -1,9 +1,10 @@
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
 
-const PORT = 80;
+const PORT = 3000;
 
-//process.env.PORT - для Heroku
+//process.env.PORT - Heroku подставляет свой порт
 
 const port =  process.env.PORT || PORT;
 

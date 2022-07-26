@@ -5,7 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
-    "build": "webpack --config ./webpackConfig/webpack.prod.conf.js",
+    "build": "node --max_old_space_size=2560 node_modules/webpack/bin/webpack.js --config ./webpackConfig/webpack.prod.conf.js",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint src/**/*.{css,scss}",
@@ -97,6 +97,7 @@
     "@sentry/tracing": "7.7.0",
     "@types/redux-logger": "3.0.9",
     "classnames": "2.3.1",
+    "dotenv": "16.0.1",
     "express": "4.18.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
