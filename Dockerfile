@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR app/
+WORKDIR /var/www
 
 COPY package*.json ./
 
@@ -8,6 +8,6 @@ RUN npm install -f
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 3000
 
 CMD ["npm", "run", "server"]
