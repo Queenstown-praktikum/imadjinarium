@@ -5,7 +5,7 @@ WORKDIR /var/www
 COPY package*.json ./
 COPY package-lock*.json ./
 
-RUN npm install -f
+RUN npm i
 
 COPY . .
 
