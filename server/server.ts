@@ -1,10 +1,11 @@
 const express = require('express');
 const path = require('path');
 
-
 const PORT = 3000;
 
-const port =  PORT;
+//process.env.PORT - для Heroku
+
+const port =  process.env.PORT || PORT;
 
 const app = express();
 
