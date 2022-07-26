@@ -9,6 +9,6 @@ RUN npm i -f
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["npm", "run", "server"]
