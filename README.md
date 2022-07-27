@@ -1,5 +1,7 @@
 ## Игра "Имаджинариум"
 
+### [imadjinarium.herokuapp.com](https://imadjinarium.herokuapp.com/)
+
 Клонирование проекта SSH:
 ```bash
 git clone git@github.com:Queenstown-praktikum/imadjinarium.git
@@ -36,7 +38,26 @@ git clone git@github.com:Queenstown-praktikum/imadjinarium.git
    - Баги `bagfix/issues-№`
    - Коммиты `issues №: ....`
    
-
+    `deploy` - развертывание на Heroku
 
 3) Умные компоненты храним в папке `Features`
 4) Components, Feature, Pages ... экспортируем из осмысленно наименованных файлов, не из `index.tsx`
+
+
+## Heroku инструкция
+  При мерже в `deploy` автоматически происходит развертывание
+  [Статья](https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej)
+  
+  Для ручного развертывания:
+  - `heroku container:login`
+  - `heroku create <name-app>` 
+  - `heroku container:push web`
+  - `heroku container:release web`
+  - `heroku open`
+
+  Посмотреть логи:
+  - `heroku container:login`
+  - `heroku logs --tail -a <name-app>`
+
+  Стоит обратить внимание что Heroku при развертывании использует свой порт
+  достаем его через `process.env.PORT`
