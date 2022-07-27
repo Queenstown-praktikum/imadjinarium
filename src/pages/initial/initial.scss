@@ -1,0 +1,13 @@
+.initial-page {
+  margin-top: 100px;
+
+  &__players {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+  }
+
+  &__button {
+    margin-top: 50px;
+  }
+}
