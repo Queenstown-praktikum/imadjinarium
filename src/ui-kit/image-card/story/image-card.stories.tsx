@@ -35,8 +35,8 @@ export const Default = Template.bind({});
 export const WithCaption = Template.bind({});
 WithCaption.args = { caption: 'Ваша карта' };
 
-export const WithLabel = Template.bind({});
-WithLabel.args = {
+export const WithPlayerToken = Template.bind({});
+WithPlayerToken.args = {
   labelUrl: 'https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg',
   caption: 'Дмитрий',
 };
