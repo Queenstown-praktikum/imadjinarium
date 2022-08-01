@@ -3,7 +3,7 @@
 interface CssExports {
   'leader-board': string;
   'leader-board__header': string;
-  'leader-board__header_title': string;
+  'leader-board__header-title': string;
   'leader-board__info': string;
 }
 export const cssExports: CssExports;

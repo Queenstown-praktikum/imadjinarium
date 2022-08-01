@@ -16,8 +16,8 @@ export const LeaderBoard: FC = () => {
   return (
     <div className={cn(styles['leader-board'], 'fullscreen', 'centered')}>
       <div className={cn(styles['leader-board__header'])}>
-        <div className={styles['leader-board__header_title']}>Логин</div>
-        <div className={styles['leader-board__header_title']}>Кол-во очков</div>
+        <div className={styles['leader-board__header-title']}>Логин</div>
+        <div className={styles['leader-board__header-title']}>Кол-во очков</div>
       </div>
       {data.length ? (
         data.length &&
