@@ -16,6 +16,7 @@ import { PlayerSelectionPage } from './src/pages/player-selection/player-selecti
 import { RoundResultsPage } from './src/pages/round-results/round-results.page';
 import { RoundIntroPage } from './src/pages/round-intro/round-intro.page';
 import { Forum } from './src/pages/forum/forum';
+import { LeaderBoard } from './src/pages/leader-board/leader-board';
 import { InitialPage } from './src/pages/initial/initial.page';
 
 Sentry.init({
@@ -40,6 +41,7 @@ root.render(
             <Route path='sign-up' element={<SignUpPage />} />
             <Route path='initial' element={<InitialPage />} />
             <Route path='forum' element={<Forum />} />
+            <Route path='leaderboard' element={<LeaderBoard />} />
             <Route path='player-selection' element={<PlayerSelectionPage />} />
             <Route
               path='round-intro-leading'
