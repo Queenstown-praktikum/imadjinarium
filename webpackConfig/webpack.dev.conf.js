@@ -12,8 +12,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     static: {
       directory: path.resolve(__dirname, '../dist'),
     },
-    port: 3000,
-    host: '0.0.0.0',
+    port: 1234,
+    host: 'localhost',
     compress: true,
     open: true,
     client: {
@@ -24,8 +24,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
   },
   plugins: [],
-})
+});
 
 module.exports = new Promise((resolve, reject) => {
-  resolve(devWebpackConfig)
+  resolve(devWebpackConfig);
 });

@@ -1,0 +1,28 @@
+.leading-block {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--color-grey);
+  }
+
+  &__association {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--color-white);
+    background-color: var(--color-blue-light);
+
+    &_wide {
+      width: 100%;
+    }
+
+    &_narrow {
+      width: fit-content;
+    }
+  }
+}
