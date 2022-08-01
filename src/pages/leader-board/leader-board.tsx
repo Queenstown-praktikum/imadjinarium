@@ -15,15 +15,15 @@ export const LeaderBoard: FC = () => {
 
   return (
     <div className={cn(styles['leader-board'], 'fullscreen', 'centered')}>
-      <div className={cn(styles['leader-board_header'])}>
-        <div className={styles['leader-board_header_title']}>Логин</div>
-        <div className={styles['leader-board_header_title']}>Кол-во очков</div>
+      <div className={cn(styles['leader-board__header'])}>
+        <div className={styles['leader-board__header_title']}>Логин</div>
+        <div className={styles['leader-board__header_title']}>Кол-во очков</div>
       </div>
       {data.length ? (
         data.length &&
         data.map((item) => <Row key={item.id} data={item} />)
       ) : (
-        <div className={styles['leader-board_info']}>Пока не произошло ни одной игры</div>
+        <div className={styles['leader-board__info']}>Пока не произошло ни одной игры</div>
       )}
     </div>
   );

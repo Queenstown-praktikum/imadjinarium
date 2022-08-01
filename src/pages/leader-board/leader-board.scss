@@ -6,7 +6,7 @@
   max-width: 1200px;
   margin: 0 auto;
 
-  &_header {
+  &__header {
     display: grid;
     grid-template-columns: 1fr 150px;
     align-items: center;
@@ -24,7 +24,7 @@
     }
   }
 
-  &_info {
+  &__info {
     font-size: 16px;
     line-height: 18px;
     text-align: center;

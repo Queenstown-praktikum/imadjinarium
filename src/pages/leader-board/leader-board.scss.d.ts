@@ -2,9 +2,9 @@
 // Please do not change this file!
 interface CssExports {
   'leader-board': string;
-  'leader-board_header': string;
-  'leader-board_header_title': string;
-  'leader-board_info': string;
+  'leader-board__header': string;
+  'leader-board__header_title': string;
+  'leader-board__info': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

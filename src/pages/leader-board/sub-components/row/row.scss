@@ -1,5 +1,5 @@
 .lb {
-  &_row {
+  &__row {
     display: grid;
     grid-template-columns: 1fr 150px;
     align-items: center;
@@ -8,12 +8,12 @@
     padding: 5px 10px;
   }
 
-  &_block {
+  &__block {
     display: flex;
     align-items: center;
   }
 
-  &_avatar {
+  &__avatar {
     height: 40px;
     width: 40px;
     background: #afafaf;
@@ -25,14 +25,14 @@
     }
   }
 
-  &_login {
+  &__login {
     margin-left: 15px;
     font-size: 14px;
     line-height: 16px;
     font-weight: 600;
   }
 
-  &_score {
+  &__score {
     font-size: 16px;
     line-height: 18px;
     font-weight: 900;
