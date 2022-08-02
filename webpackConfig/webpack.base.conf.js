@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 const _path = (alias) => path.resolve(__dirname, alias);
 
@@ -78,6 +79,18 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+    }),
+    new InjectManifest({
+      swSrc: './src/sw.js',
+      swDest: 'sw.js',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/favicon.ico', to: '' },
+        { from: 'src/manifest.json', to: '' },
+        { from: 'src/logo192.png', to: '' },
+        { from: 'src/logo512.png', to: '' },
+      ],
     }),
     // Плагин копирует файлы в dist
     // new CopyPlugin({

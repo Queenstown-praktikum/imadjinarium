@@ -18,6 +18,7 @@ import { RoundIntroPage } from './src/pages/round-intro/round-intro.page';
 import { Forum } from './src/pages/forum/forum';
 import { LeaderBoard } from './src/pages/leader-board/leader-board';
 import { InitialPage } from './src/pages/initial/initial.page';
+import { registerServiceWorker } from './src/sw-registration';
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',
@@ -59,3 +60,5 @@ root.render(
     </Provider>
   </Sentry.ErrorBoundary>,
 );
+
+registerServiceWorker();
