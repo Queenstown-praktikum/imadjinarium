@@ -7,4 +7,10 @@ on:
 jobs:
   build:
     runs-on: node:latest
-    run: npm run test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm install
+      - name: Run tests
+        run: npm run test
+ 
