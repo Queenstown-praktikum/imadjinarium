@@ -6,11 +6,16 @@ on:
       - 'feature/**'
 jobs:
   build:
-    runs-on: node-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install modules
-        run: npm install
-      - name: Run tests
-        run: npm run test
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        
+    - name: Install modules
+      run: npm install
+    - name: Run tests
+      run: npm run test
  
