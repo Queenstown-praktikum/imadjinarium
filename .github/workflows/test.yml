@@ -7,7 +7,7 @@ on:
   
   pull_request:
     branches:
-      - main
+      - master
       - deploy
       - 'sprint_**'
 jobs:
