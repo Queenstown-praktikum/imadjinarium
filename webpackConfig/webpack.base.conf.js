@@ -81,20 +81,16 @@ module.exports = {
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
     }),
     new InjectManifest({
-      swSrc: './src/sw.js',
+      swSrc: './src/core/service-worker/sw.js',
       swDest: 'sw.js',
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'src/favicon.ico', to: '' },
-        { from: 'src/manifest.json', to: '' },
-        { from: 'src/logo192.png', to: '' },
-        { from: 'src/logo512.png', to: '' },
+        { from: 'src/core/service-worker/manifest.json', to: _path('../dist') },
+        { from: 'public/favicon.ico', to: _path('../dist') },
+        { from: 'public/logo192.png', to: _path('../dist') },
+        { from: 'public/logo512.png', to: _path('../dist') },
       ],
     }),
-    // Плагин копирует файлы в dist
-    // new CopyPlugin({
-    //     patterns: [{ from: _path('../src/Icons'), to: _path('../dist') }],
-    // }),
   ],
 };

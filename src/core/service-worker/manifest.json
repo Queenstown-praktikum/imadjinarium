@@ -1,5 +1,4 @@
 {
-  "short_name": "imadjinarium",
   "name": "imadjinarium",
   "start_url": "/",
   "icons": [
@@ -21,5 +20,5 @@
   ],
   "display": "standalone",
   "theme_color": "#000",
-  "background_color": "#000"
+  "background_color": "#fff"
 }
