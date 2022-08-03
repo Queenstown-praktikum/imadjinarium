@@ -6,7 +6,7 @@ on:
       - 'feature/**'
 jobs:
   build:
-    runs-on: node:latest
+    runs-on: node-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
