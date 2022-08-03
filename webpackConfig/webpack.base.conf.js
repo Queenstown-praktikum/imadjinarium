@@ -25,6 +25,7 @@ module.exports = {
     alias: {
       // Тут будут алиасы к папкам
       // 'Components': _path('src/Components/'),
+      ['ui-kit']: _path('../src/ui-kit/') 
     },
   },
   module: {

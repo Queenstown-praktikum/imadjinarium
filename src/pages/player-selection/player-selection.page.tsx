@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import { ImageCard } from '../../ui-kit/image-card/image-card';
+import { ImageCard } from 'ui-kit';
 import styles from './player-selection.scss';
 
 export const PlayerSelectionPage: FC = () => (

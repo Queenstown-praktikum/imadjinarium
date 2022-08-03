@@ -60,14 +60,14 @@
         "vars": "all",
         "varsIgnorePattern": ",^_"
       }
-    ]
+    ],
+    "react/jsx-props-no-spreading": "off"
   },
   "overrides": [
     {
       "files": ["*.stories.tsx"],
       "rules": {
-        "no-unused-vars": "off",
-        "react/jsx-props-no-spreading": "off"
+        "no-unused-vars": "off"
       }
     }
   ],

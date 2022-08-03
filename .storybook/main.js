@@ -1,4 +1,5 @@
 const path = require('path');
+const _path = (alias) => path.resolve(__dirname, alias);
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -33,7 +34,16 @@ module.exports = {
     });
 
     // Return the altered config
-    return config;
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve?.alias,
+          ['ui-kit']: _path('../src/ui-kit/') 
+        },
+      },
+    };
   },
   framework: '@storybook/react',
   core: {

@@ -11,6 +11,7 @@
   },
   "ignoreFiles": [
     "dist/*",
-    "node_modules/*"
+    "node_modules/*",
+    "storybook-introduction/*"
   ]
 }

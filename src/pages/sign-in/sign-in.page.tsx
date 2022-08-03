@@ -2,8 +2,8 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router';
 import { useUserSignInMutation } from '../../redux/userApi';
-import { FormWrapper, TextField } from '../../components';
-import { WrapperButtonType } from '../../components/formWrapper/types';
+import { FormWrapper, TextField } from '../../ui-kit';
+import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
 
 export const SignInPage: FC = () => {
   const [signInUser, { data, isError, error }] = useUserSignInMutation()

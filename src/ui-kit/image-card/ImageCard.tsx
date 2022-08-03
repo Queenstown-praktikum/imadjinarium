@@ -8,7 +8,7 @@ type Props = {
   caption?: string;
 };
 
-export const ImageCard: FC<Props> = ({ imageUrl, labelUrl, caption }) => (
+const ImageCard: FC<Props> = ({ imageUrl, labelUrl, caption }) => (
   <div className={styles['image-card']} style={{ backgroundImage: convertImageUrlToCssUrl(imageUrl) }}>
     {labelUrl && (
       <div className={styles['image-card__label']} style={{ backgroundImage: convertImageUrlToCssUrl(labelUrl) }} />
@@ -16,3 +16,5 @@ export const ImageCard: FC<Props> = ({ imageUrl, labelUrl, caption }) => (
     {caption && <div className={styles['image-card__caption']}>{caption}</div>}
   </div>
 );
+
+export default ImageCard;
