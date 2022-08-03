@@ -1,0 +1,10 @@
+name: Testing project
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+jobs:
+  build:
+    runs-on: node:latest
+    run: npm run test
