@@ -60,7 +60,7 @@ registerRoute(
 );
 
 /**
- * Move api.
+ * Пример кэширования запроса в бэк
  *
  * Caches at: runtime
  */
