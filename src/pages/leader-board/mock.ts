@@ -25,4 +25,10 @@ export const DataLeaderBoard: Record<IdRow, RowProps> = {
     login: 'Сергей',
     score: 17,
   },
+  5: {
+    id: 4,
+    avatar: '',
+    login: 'Геннадий',
+    score: 11,
+  },
 };
