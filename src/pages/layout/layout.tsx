@@ -1,13 +1,24 @@
 import '../../styles/index.scss';
-import React, { FC } from 'react';
+import React, { FC, useEffect, } from 'react';
 import { Outlet } from 'react-router';
+import { useDispatch } from 'react-redux';
 import { Navbar } from '../../ui-kit/navbar/navbar';
-
 import styles from './layout.scss';
 import { useGetUserQuery } from '../../redux/userApi';
+import { setUserData } from '../../redux/slices/user';
 
 export const Layout: FC = () => {
-  const { isLoading } = useGetUserQuery({});
+  const dispatch = useDispatch()
+  const {
+    data,
+    isLoading,
+  } = useGetUserQuery({})
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setUserData(data))
+    }
+  }, [data, dispatch])
 
   if (isLoading) {
     return <h1>Loading...</h1>;
