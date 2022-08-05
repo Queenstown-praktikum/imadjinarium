@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { PlayerToken } from '../../../ui-kit/player-token/player-token';
+import { PlayerToken } from 'ui-kit';
 import styles from './player-card.scss';
 import { PlayerCardProps } from './types';
 

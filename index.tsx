@@ -7,7 +7,7 @@ import SentryRRWeb from '@sentry/rrweb';
 import { store } from './src/redux/store';
 import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error.page';
 import { PlayerSelectionPage } from './src/pages/player-selection/player-selection.page';
-import { ProfilePage } from './src/pages/profile/profile';
+import { ProfilePage } from './src/pages/login/profile';
 import { registerServiceWorker } from './src/core/service-worker/sw-registration';
 import { Routing } from './src/core/routing/routing';
 

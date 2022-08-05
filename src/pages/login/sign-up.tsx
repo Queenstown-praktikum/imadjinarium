@@ -1,6 +1,4 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import cn from 'classnames';
-import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { FormWrapper, TextField } from '../../ui-kit';
 import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
@@ -10,7 +8,6 @@ import { setUserData } from '../../redux/slices/user';
 export const SignUpPage: FC = () => {
   const [signUpUser, { data, isError, error }] = useUserSignUpMutation()
   const [regData, setRegData] = useState<any>({})
-  const navigate = useNavigate();
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -41,15 +38,15 @@ export const SignUpPage: FC = () => {
     styleType: 'main',
     label: 'Зарегистрироватся',
     action: handleSignUpUser,
-  }, {
-    styleType: 'secondary',
-    label: 'Войти',
-    action: () => navigate('/sign-up'),
   }]
 
-  return <div className={cn('fullscreen', 'centered')}>
+  return <div>
     <FormWrapper
       title="Регистрация"
+      link={{
+        label: 'У меня есть аккаунт',
+        to: '/login'
+      }}
       buttons={buttons}
       // TODO(Egor) типизировать ошибки в userApi (пока не знаю как)
       // и локализовать ошибки (пока на англ)
@@ -64,20 +61,8 @@ export const SignUpPage: FC = () => {
         />
 
         <TextField
-          name="login"
-          label="Логин"
-          onTextFieldChange={setRegistrationField}
-        />
-
-        <TextField
           name="name"
           label="Имя"
-          onTextFieldChange={setRegistrationField}
-        />
-
-        <TextField
-          name="surname"
-          label="Фамилия"
           onTextFieldChange={setRegistrationField}
         />
 
@@ -96,7 +81,7 @@ export const SignUpPage: FC = () => {
 
         <TextField
           name="re-password"
-          label="Пароль (ещё раз)"
+          label="Подтверждение пароля"
           type='password'
           onTextFieldChange={setRegistrationField}
         />

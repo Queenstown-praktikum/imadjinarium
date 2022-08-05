@@ -33,6 +33,20 @@ module.exports = {
       ],
     });
 
+    // https://stackoverflow.com/a/61706308/10331102
+    const fileLoaderRule = config.module.rules.find(
+      (rule) => rule.test && rule.test.test(".svg")
+    );
+
+    fileLoaderRule.exclude = /\.svg$/;
+
+    config.module.rules.push({
+        test: /\.svg$/,
+        enforce: "pre",
+        loader: require.resolve("@svgr/webpack")
+    });
+
+
     // Return the altered config
     return {
       ...config,

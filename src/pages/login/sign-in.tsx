@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import cn from 'classnames';
 import { useNavigate } from 'react-router';
 import { useUserSignInMutation } from '../../redux/userApi';
 import { FormWrapper, TextField } from '../../ui-kit';
@@ -9,7 +8,6 @@ export const SignInPage: FC = () => {
   const [signInUser, { data, isError, error }] = useUserSignInMutation()
   const [loginData, setLoginData] = useState({login: '', password: ''})
   const navigate = useNavigate();
-
 
   useEffect(() => {
     if (data === 'OK') {
@@ -30,17 +28,17 @@ export const SignInPage: FC = () => {
 
   const buttons: WrapperButtonType[] = [{
     styleType: 'main',
-    label: 'Авторизоватся',
+    label: 'Войти',
     action: handleSignInUser,
-  }, {
-    styleType: 'secondary',
-    label: 'Нет аккаунта?',
-    action: () => navigate('/sign-up'),
   }]
 
-  return <div className={cn('fullscreen', 'centered')}>
+  return <div>
     <FormWrapper
-      title="Вход"
+      title="Вход в аккаунт"
+      link={{
+        label: 'Зарегистрироваться',
+        to: '/login/sign-up'
+      }}
       buttons={buttons}
       // TODO(Egor) типизировать ошибки в userApi (пока не знаю как)
       // и локализовать ошибки (пока на англ)

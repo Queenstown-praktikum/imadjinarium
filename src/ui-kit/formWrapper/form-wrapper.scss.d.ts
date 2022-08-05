@@ -6,6 +6,8 @@ interface CssExports {
   'fw_buttons__main': string;
   'fw_buttons__secondary': string;
   'fw_formError': string;
+  'fw_header': string;
+  'fw_header__link': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

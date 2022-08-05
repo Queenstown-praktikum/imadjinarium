@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
+import { PlayerToken } from 'ui-kit';
 import styles from './image-card.scss';
 import { convertImageUrlToCssUrl } from '../../utils/url';
-import { PlayerToken } from '../player-token/player-token';
 
 type Props = {
   imageUrl: string;

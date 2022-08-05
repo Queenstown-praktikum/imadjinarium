@@ -7,13 +7,7 @@
 .layout {
   padding: var(--layout-padding);
   width: 100%;
-  height: 100vh;
-
-  &__header {
-    height: var(--layout-header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 50px;
-  }
+  min-height: 100vh;
+  background: #101010;
+  color: #fff;
 }

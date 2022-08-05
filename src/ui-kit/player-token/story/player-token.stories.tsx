@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { ComponentProps } from 'react';
-import { PlayerToken } from '../player-token';
+import PlayerToken from '../PlayerToken';
 
 type Props = ComponentProps<typeof PlayerToken>;
 

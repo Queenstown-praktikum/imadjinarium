@@ -1,12 +1,24 @@
 .fw {
-  box-shadow: 0 0 8px 2px rgb(192 192 192 / 50%);
   border-radius: 20px;
   padding: 40px 40px 20px;
-  min-width: 400px;
+  min-width: 470px;
 
-  & h2 {
-    margin-bottom: 40px;
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    & h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    &__link {
+      color: #2E62D3;
+    }
   }
+
 
   &_buttons {
     display: flex;
