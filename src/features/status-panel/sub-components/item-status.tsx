@@ -3,7 +3,7 @@ import cn from 'classnames';
 import styles from '../status-panel.scss';
 import { ItemStatusProps, LeaderUserId, StatusProps } from '../types';
 import { CheckedIcon } from '../../../icons';
-import { Preloader } from '../../../ui-kit/preloader';
+import { Preloader } from '../../../ui-kit/preloader/preloader';
 
 const renderIcon = (stats: StatusProps) => {
   switch (stats) {

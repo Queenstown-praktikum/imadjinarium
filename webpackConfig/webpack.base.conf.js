@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 const _path = (alias) => path.resolve(__dirname, alias);
 
@@ -18,7 +19,7 @@ module.exports = {
   output: {
     filename: 'main-[hash:4].js',
     path: _path('../dist'),
-    publicPath: "/",
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.css', '.scss'],
@@ -73,15 +74,23 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: _path('../public/index.html'),
-      favicon: _path("../public/favicon.ico"),
+      favicon: _path('../public/favicon.ico'),
     }),
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
     }),
-    // Плагин копирует файлы в dist
-    // new CopyPlugin({
-    //     patterns: [{ from: _path('../src/Icons'), to: _path('../dist') }],
-    // }),
+    new InjectManifest({
+      swSrc: './src/core/service-worker/sw.js',
+      swDest: 'sw.js',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/core/service-worker/manifest.json', to: _path('../dist') },
+        { from: 'public/favicon.ico', to: _path('../dist') },
+        { from: 'public/logo192.png', to: _path('../dist') },
+        { from: 'public/logo512.png', to: _path('../dist') },
+      ],
+    }),
   ],
 };
