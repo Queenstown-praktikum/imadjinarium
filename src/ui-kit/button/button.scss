@@ -33,6 +33,10 @@
     padding: 12px;
     font-size: 18px;
   }
+}
 
-
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    cursor: pointer;
+  }
 }

@@ -22,14 +22,8 @@
   }
 
   &__label {
-    width: 60px;
-    height: 60px;
     position: absolute;
     top: var(--image-card-padding);
     left: var(--image-card-padding);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
   }
 }

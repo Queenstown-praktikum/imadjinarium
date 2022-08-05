@@ -13,7 +13,7 @@ export const userApi = createApi({
   endpoints: (build) => ({
     getUser: build.query({
       query: () => '/auth/user',
-      providesTags: [userTagType]
+      providesTags: (result) => result ? [{ type: userTagType }] : [],
     }),
     userSignIn: build.mutation({
       query: (body) => ({

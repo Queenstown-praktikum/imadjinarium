@@ -25,6 +25,8 @@
       "prettier"
   ],
   "rules": {
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/jsx-props-no-spreading": "off",
     "import/extensions": "off",
     "react/react-in-jsx-scope": "off",
     "import/prefer-default-export": "off",
@@ -42,15 +44,14 @@
       {
         "devDependencies": [
           "**/*.stories.*",
-          "**/.storybook/**/*.*"
+          "**/.storybook/**/*.*",
+          "**/*.test.ts",
+          "**/*.test.tsx"
         ],
         "peerDependencies": true
       }
     ],
-    "no-unused-vars": [
-      "error",
-      {}
-    ],
+    "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       2,
       {
@@ -60,14 +61,15 @@
         "vars": "all",
         "varsIgnorePattern": ",^_"
       }
-    ],
-    "react/jsx-props-no-spreading": "off"
+    ]
   },
   "overrides": [
     {
       "files": ["*.stories.tsx"],
       "rules": {
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "react/jsx-props-no-spreading": "off"
       }
     }
   ],
