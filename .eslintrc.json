@@ -44,7 +44,9 @@
       {
         "devDependencies": [
           "**/*.stories.*",
-          "**/.storybook/**/*.*"
+          "**/.storybook/**/*.*",
+          "**/*.test.ts",
+          "**/*.test.tsx"
         ],
         "peerDependencies": true
       }
