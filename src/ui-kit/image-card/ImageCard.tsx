@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
+import { PlayerToken } from 'ui-kit';
 import styles from './image-card.scss';
 import { convertImageUrlToCssUrl } from '../../utils/url';
-import { PlayerToken } from '../player-token/player-token';
 
 type Props = {
   imageUrl: string;
@@ -9,7 +9,7 @@ type Props = {
   caption?: string;
 };
 
-export const ImageCard: FC<Props> = ({ imageUrl, labelUrl, caption }) => (
+const ImageCard: FC<Props> = ({ imageUrl, labelUrl, caption }) => (
   <div className={styles['image-card']} style={{ backgroundImage: convertImageUrlToCssUrl(imageUrl) }}>
     {labelUrl && (
       <div className={styles['image-card__label']}>
@@ -19,3 +19,5 @@ export const ImageCard: FC<Props> = ({ imageUrl, labelUrl, caption }) => (
     {caption && <div className={styles['image-card__caption']}>{caption}</div>}
   </div>
 );
+
+export default ImageCard;

@@ -26,6 +26,7 @@ module.exports = {
     alias: {
       // Тут будут алиасы к папкам
       // 'Components': _path('src/Components/'),
+      ['ui-kit']: _path('../src/ui-kit/') 
     },
   },
   module: {
@@ -83,6 +84,7 @@ module.exports = {
     new InjectManifest({
       swSrc: './src/core/service-worker/sw.js',
       swDest: 'sw.js',
+      maximumFileSizeToCacheInBytes: 9000000,
     }),
     new CopyPlugin({
       patterns: [

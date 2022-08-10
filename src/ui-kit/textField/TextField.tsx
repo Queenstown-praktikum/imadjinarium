@@ -13,11 +13,11 @@ const TextField: FC<TextFieldProps> = (props: TextFieldProps) => {
     onTextFieldChange,
   } = props
 
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value), [setValue])
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setValue(e?.target?.value), [setValue])
 
   const handleBlur = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if (typeof onTextFieldChange === 'function') {
-      onTextFieldChange(name, e.target.value)
+      onTextFieldChange(name, e?.target?.value)
     }
   }, [name, onTextFieldChange])
 

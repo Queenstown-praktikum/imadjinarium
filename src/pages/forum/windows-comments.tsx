@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
+import { Button } from 'ui-kit';
 import styles from './forum.scss';
 import { DataThemeProps } from './types';
 import { ItemComment } from './sub-components/item-comment/item-comment';
 import { InputMessage } from './sub-components/input-message/input-messages';
-import { Button } from '../../ui-kit/button/button';
 
 export const WindowsComments: FC<{ data: DataThemeProps }> = ({ data }) => (
   <div className={cn(styles.forum__wc)}>
@@ -19,7 +19,7 @@ export const WindowsComments: FC<{ data: DataThemeProps }> = ({ data }) => (
     <div className={cn(styles['forum__wc-control'])}>
       <InputMessage placeholder='Введите комментарий...' />
       <div className={cn(styles['forum__wc-button'])}>
-        <Button>Отправить</Button>
+        <Button label='Отправить' />
       </div>
     </div>
   </div>

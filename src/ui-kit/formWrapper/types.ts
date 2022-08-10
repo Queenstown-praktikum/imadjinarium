@@ -6,6 +6,10 @@ export type WrapperButtonType = {
 
 export type FormWrapperProps = {
   title: string;
+  link?: {
+    label: string;
+    to: string;
+  };
   buttons: WrapperButtonType[];
   formError?: string;
 };

@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  padding: 12px;
+  min-height: 84px;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+
+  &_logo {
+    width: 357px;
+    height: 34px;
+  }
+
+  &_emptyAva {
+    width: 60px;
+  }
+}

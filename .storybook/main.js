@@ -1,4 +1,5 @@
 const path = require('path');
+const _path = (alias) => path.resolve(__dirname, alias);
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -32,8 +33,31 @@ module.exports = {
       ],
     });
 
+    // https://stackoverflow.com/a/61706308/10331102
+    const fileLoaderRule = config.module.rules.find(
+      (rule) => rule.test && rule.test.test(".svg")
+    );
+
+    fileLoaderRule.exclude = /\.svg$/;
+
+    config.module.rules.push({
+        test: /\.svg$/,
+        enforce: "pre",
+        loader: require.resolve("@svgr/webpack")
+    });
+
+
     // Return the altered config
-    return config;
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve?.alias,
+          ['ui-kit']: _path('../src/ui-kit/') 
+        },
+      },
+    };
   },
   framework: '@storybook/react',
   core: {

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
+import { ImageCard } from 'ui-kit';
 import styles from './round-results.scss';
-import { ImageCard } from '../../ui-kit/image-card/image-card';
 import { LeadingBlock } from './leading-block/leading-block';
 
 export const RoundResultsPage: FC = () => (

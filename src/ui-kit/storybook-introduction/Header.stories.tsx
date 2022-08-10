@@ -1,25 +1,25 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { Header } from './Header';
+import { Header } from '..';
 
 export default {
-  title: 'Example/Header',
+  title: 'Common/Header',
   component: Header,
   parameters: {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
+    backgrounds: {
+      default: 'black',
+      values: [
+        { name: 'black', value: '#101010' },
+      ],
+    },
   },
 } as ComponentMeta<typeof Header>;
 
 const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
-  user: {
-    name: 'Jane Doe',
-  },
+export const Default = Template.bind({});
+Default.args = {
+  avatarUrl: 'https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg'
 };
-
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {};

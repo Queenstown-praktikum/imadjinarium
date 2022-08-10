@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
+import { Button } from 'ui-kit';
 import styles from './initial.scss';
 import { PlayerCard } from './components/player-card';
-import { Button } from '../../ui-kit/button/button';
 
 // временно, пока не добавим глобальный тип
 type User = { name: string; avatar: string };
@@ -26,7 +26,7 @@ export const InitialPage: FC = () => (
       {renderPlayers(users)}
     </ul>
     <div className={styles['initial-page__button']}>
-      <Button>Играть</Button>
+      <Button label='Играть' />
     </div>
   </div>
 );

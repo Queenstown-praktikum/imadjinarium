@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { ComponentProps } from 'react';
 import { withDesign } from 'storybook-addon-designs';
-import { ImageCard } from '../image-card';
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { ImageCard } from 'ui-kit';
+
 type Props = ComponentProps<typeof ImageCard>;
 
 export default {

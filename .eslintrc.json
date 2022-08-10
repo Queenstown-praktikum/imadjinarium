@@ -51,7 +51,6 @@
         "peerDependencies": true
       }
     ],
-    "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       2,
       {
@@ -61,12 +60,14 @@
         "vars": "all",
         "varsIgnorePattern": ",^_"
       }
-    ]
+    ],
+    "jsx-a11y/no-static-element-interactions": "off"
   },
   "overrides": [
     {
       "files": ["*.stories.tsx"],
       "rules": {
+        "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "react/jsx-props-no-spreading": "off"
       }
