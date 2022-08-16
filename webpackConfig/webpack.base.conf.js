@@ -3,11 +3,14 @@
  * Тут общие настройки как для PRODUCTION так и для DEVELOPMENT
  */
 
+// import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { HotModuleReplacementPlugin } = require('webpack');
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 const _path = (alias) => path.resolve(__dirname, alias);
@@ -15,9 +18,10 @@ const _path = (alias) => path.resolve(__dirname, alias);
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: _path('../index.tsx'),
+  entry: ['@gatsbyjs/webpack-hot-middleware/client?path=/__webpack_hmr', _path('../src/index.tsx')],
   output: {
-    filename: 'main-[hash:4].js',
+    // filename: 'main-[hash:4].js',
+    filename: 'client.bundle.js',
     path: _path('../dist'),
     publicPath: '/',
   },
@@ -26,7 +30,7 @@ module.exports = {
     alias: {
       // Тут будут алиасы к папкам
       // 'Components': _path('src/Components/'),
-      ['ui-kit']: _path('../src/ui-kit/') 
+      ['ui-kit']: _path('../src/ui-kit/'),
     },
   },
   module: {
@@ -73,9 +77,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: _path('../public/index.html'),
-      favicon: _path('../public/favicon.ico'),
+    new HotModuleReplacementPlugin(),
+    new ReactRefreshPlugin({
+      overlay: { sockIntegration: 'whm' },
     }),
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
