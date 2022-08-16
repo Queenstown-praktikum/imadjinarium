@@ -1,3 +1,5 @@
 import React, { FC } from 'react';
 
-export const TestApp: FC = () => <div>ADASDA!</div>;
+const TestApp: FC = () => <div>ADASDA!asdasdasdasda!!!!</div>;
+
+export default TestApp;
