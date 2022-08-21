@@ -5,8 +5,9 @@
   "main": "src/index.tsx",
   "scripts": {
     "start": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
-    "start:server": "tsc --project ./src/server && node ./server-dist/server/index.js",
-    "build:client": "node --max_old_space_size=2560 node_modules/webpack/bin/webpack.js --config ./webpackConfig/webpack.prod.conf.js",
+    "start:server": "tsc --project ./src/server && node ./server-dist/index.js",
+    "build:client": "webpack --max_old_space_size=2560 --config ./webpackConfig/webpack.prod.conf.js",
+    "build:client:ssr": "webpack --config ./webpackConfig/ssr.conf.js --watch",
     "build:server": "tsc --project ./src/server",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
@@ -54,6 +55,7 @@
     "@types/node": "18.0.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "@types/webpack-node-externals": "^2.5.3",
     "@typescript-eslint/eslint-plugin": "5.30.5",
     "@typescript-eslint/parser": "5.30.5",
     "babel-loader": "8.2.5",
@@ -96,6 +98,7 @@
     "webpack-cli": "4.10.0",
     "webpack-dev-server": "4.9.3",
     "webpack-merge": "5.8.0",
+    "webpack-node-externals": "^3.0.0",
     "workbox-webpack-plugin": "6.5.4"
   },
   "dependencies": {

@@ -6,7 +6,7 @@
 // import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
@@ -76,7 +76,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HotModuleReplacementPlugin(),
     new ReactRefreshPlugin({
       overlay: { sockIntegration: 'whm' },
