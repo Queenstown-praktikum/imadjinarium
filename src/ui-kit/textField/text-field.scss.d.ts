@@ -6,7 +6,6 @@ interface CssExports {
   'tf_input__error': string;
   'tf_label': string;
   'tf_label__error': string;
-  'tf_label__focus': string;
   'tf_textError': string;
 }
 export const cssExports: CssExports;

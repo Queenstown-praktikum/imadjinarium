@@ -3,12 +3,15 @@ import { useNavigate } from 'react-router';
 import { useUserSignInMutation } from '../../redux/userApi';
 import { FormWrapper, TextField } from '../../ui-kit';
 import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
+import useCheckUser from './hooks/useCheckUser';
+import styles from './login.scss'
 
 export const SignInPage: FC = () => {
   const [signInUser, { data, isError, error }] = useUserSignInMutation()
   const [loginData, setLoginData] = useState({login: '', password: ''})
   const navigate = useNavigate();
 
+  useCheckUser()
   useEffect(() => {
     if (data === 'OK') {
       navigate('/')
@@ -32,7 +35,7 @@ export const SignInPage: FC = () => {
     action: handleSignInUser,
   }]
 
-  return <div>
+  return <div className={styles.login_form}>
     <FormWrapper
       title="Вход в аккаунт"
       link={{
