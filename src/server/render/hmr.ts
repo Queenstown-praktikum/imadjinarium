@@ -4,7 +4,7 @@ import devMiddleware from 'webpack-dev-middleware';
 import hotMiddleware from '@gatsbyjs/webpack-hot-middleware';
 // @ts-ignore
 // eslint-disable-next-line import/no-unresolved
-import config from '../../webpackConfig/webpack.base.conf.js';
+import config from '../../../webpackConfig/webpack.base.conf.js';
 import { render } from './render';
 
 const compiler = webpack({ ...config, mode: 'development' });

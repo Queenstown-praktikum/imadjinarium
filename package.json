@@ -5,7 +5,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "start": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
-    "start:server": "tsc --project ./src/server && node ./server-dist/index.js",
+    "start:server": "tsc --project ./src/server && node ./server-dist/server/index.js",
     "build:client": "webpack --max_old_space_size=2560 --config ./webpackConfig/webpack.prod.conf.js",
     "build:client:ssr": "webpack --config ./webpackConfig/ssr.conf.js --watch",
     "build:server": "tsc --project ./src/server",
