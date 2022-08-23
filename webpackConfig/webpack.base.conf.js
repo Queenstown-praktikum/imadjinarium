@@ -6,19 +6,21 @@
 // import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 const path = require('path');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const _path = (alias) => path.resolve(__dirname, alias);
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: ['@gatsbyjs/webpack-hot-middleware/client?path=/__webpack_hmr', _path('../src/index.tsx')],
+  // entry: ['@gatsbyjs/webpack-hot-middleware/client?path=/__webpack_hmr', _path('../src/index.tsx')],
+  entry: _path('../index.tsx'),
   output: {
     // filename: 'main-[hash:4].js',
     filename: 'client.bundle.js',
@@ -76,7 +78,7 @@ module.exports = {
     ],
   },
   plugins: [
-    // new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(),
     new HotModuleReplacementPlugin(),
     new ReactRefreshPlugin({
       overlay: { sockIntegration: 'whm' },
@@ -84,6 +86,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+    }),
+    new HtmlWebpackPlugin({
+      template: _path('../public/index.html'),
+      favicon: _path('../public/favicon.ico'),
     }),
     new InjectManifest({
       swSrc: './src/core/service-worker/sw.js',
