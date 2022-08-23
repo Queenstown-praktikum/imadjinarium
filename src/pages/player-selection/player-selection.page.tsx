@@ -17,7 +17,7 @@ export const PlayerSelectionPage: FC = () => {
   return <div className={cn(styles['player-selection-page'], 'fullscreen', 'centered')}>
     <h2 className={styles['player-selection-page__title']}>Игроки подобрали карты</h2>
     <ul className={styles['player-selection-page__cards']}>
-      {player[1].cards.map(cartList)}
+      {player[1]?.cards.map(cartList)}
     </ul>
   </div>
 };
