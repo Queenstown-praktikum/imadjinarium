@@ -1,10 +1,11 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const _path = (alias) => path.resolve(__dirname, alias);
 
 module.exports = {
-  entry: _path('../src/TestApp.tsx'),
+  entry: _path('../src/core/routing/routing.tsx'),
   target: 'node',
   mode: 'development',
   output: {
@@ -31,20 +32,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-modules-typescript-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[local]--[hash:base64]',
-              },
-              sourceMap: true,
-            },
-          },
-          { loader: 'sass-loader' },
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.svg$/i,
@@ -64,5 +52,6 @@ module.exports = {
       },
     ],
   },
+  plugins: [new MiniCssExtractPlugin()],
   externals: [nodeExternals()],
 };

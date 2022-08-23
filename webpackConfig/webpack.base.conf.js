@@ -18,7 +18,7 @@ const _path = (alias) => path.resolve(__dirname, alias);
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: ['@gatsbyjs/webpack-hot-middleware/client?path=/__webpack_hmr', _path('../src/index.tsx')],
+  entry: ['@gatsbyjs/webpack-hot-middleware/client?path=/__webpack_hmr', _path('../index.tsx')],
   output: {
     // filename: 'main-[hash:4].js',
     filename: 'client.bundle.js',
@@ -43,7 +43,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          { loader: 'style-loader' },
+          MiniCssExtractPlugin.loader,
           { loader: 'css-modules-typescript-loader' },
           {
             loader: 'css-loader',

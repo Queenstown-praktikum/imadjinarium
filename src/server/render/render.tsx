@@ -16,12 +16,12 @@ export function render(req: Request, res: Response) {
   delete require.cache[require.resolve('../../../dist/ssr.bundle.js')];
 
   // eslint-disable-next-line global-require,import/no-unresolved
-  const TestApp = require('../../../dist/ssr.bundle').default;
+  const App = require('../../../dist/ssr.bundle').default;
 
   const reactHtml = ReactDOMServer.renderToString(
     <StaticRouter location={req.url}>
       <Provider store={store}>
-        <TestApp />
+        <App />
       </Provider>
     </StaticRouter>,
   );
