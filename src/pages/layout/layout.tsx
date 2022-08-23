@@ -1,18 +1,20 @@
 import '../../styles/index.scss';
-import React, { FC, useEffect, } from 'react';
+import React, { FC, useEffect, useMemo, } from 'react';
 import { Outlet } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Header } from 'ui-kit';
 import { Navbar } from '../../ui-kit/navbar/navbar';
 import styles from './layout.scss';
 import { useGetUserQuery } from '../../redux/userApi';
 import { setUserData } from '../../redux/slices/user';
+import { ApplicationState } from '../../redux/store';
+
+const DEFAULT_LINK = 'https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg'
 
 export const Layout: FC = () => {
   const dispatch = useDispatch()
-  const {
-    data,
-  } = useGetUserQuery({})
+  const { data } = useGetUserQuery({})
+  const user = useSelector((state: ApplicationState) => state.user)
 
   useEffect(() => {
     if (data) {
@@ -20,14 +22,15 @@ export const Layout: FC = () => {
     }
   }, [data, dispatch])
 
+  const avatar = useMemo(() => user?.avatar || DEFAULT_LINK, [user])
+
   return (
     <div className={styles.layout}>
-      <Header avatarUrl='https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg' />
+      <Header avatarUrl={avatar} />
       <Navbar
         links={[
           '/',
-          'sign-in',
-          'sign-up',
+          'login',
           'initial',
           'player-selection',
           'round-intro-leading',
