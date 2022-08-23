@@ -24,7 +24,6 @@ const TextField: FC<TextFieldProps> = (props: TextFieldProps) => {
   return <div className={styles.tf}>
     <span className={
       cn(styles.tf_label, {
-        [styles.tf_label__focus]: value,
         [styles.tf_label__error]: error
       })
     }>

@@ -13,7 +13,6 @@ export const userApi = createApi({
   endpoints: (build) => ({
     getUser: build.query({
       query: () => '/auth/user',
-      providesTags: (result) => result ? [{ type: userTagType }] : [],
     }),
     userSignIn: build.mutation({
       query: (body) => ({
@@ -36,6 +35,16 @@ export const userApi = createApi({
         body,
       }),
     }),
+    changeAvatar: build.mutation({
+      query: (body) => {
+        console.log('check body', body)
+        return {
+        url: '/user/profile/avatar',
+        method: 'PUT',
+        body,
+        headers: { accept: 'application/json' },
+      }}
+    }),
     logout: build.mutation({
       query: () => ({
         url: '/auth/logout',
@@ -49,5 +58,6 @@ export const {
   useGetUserQuery,
   useUserSignInMutation,
   useUserSignUpMutation,
+  useChangeAvatarMutation,
   useLogoutMutation,
 } = userApi
