@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { useUserSignInMutation } from '../../redux/userApi';
 import { FormWrapper, TextField } from '../../ui-kit';
 import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
-import useCheckUser from './hooks/useCheckUser';
+// import useCheckUser from './hooks/useCheckUser';
 import styles from './login.scss'
 
 export const SignInPage: FC = () => {
@@ -11,7 +11,7 @@ export const SignInPage: FC = () => {
   const [loginData, setLoginData] = useState({login: '', password: ''})
   const navigate = useNavigate();
 
-  useCheckUser()
+  // useCheckUser()
   useEffect(() => {
     if (data === 'OK') {
       navigate('/')

@@ -5,14 +5,14 @@ import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
 import { useUserSignUpMutation } from '../../redux/userApi';
 import { setUserData } from '../../redux/slices/user';
 import styles from './login.scss'
-import useCheckUser from './hooks/useCheckUser';
+// import useCheckUser from './hooks/useCheckUser';
 
 export const SignUpPage: FC = () => {
   const [signUpUser, { data, isError, error }] = useUserSignUpMutation()
   const [regData, setRegData] = useState<any>({})
   const dispatch = useDispatch()
   
-  useCheckUser()
+  // useCheckUser()
   useEffect(() => {
     if (data) {
       dispatch(setUserData(data))

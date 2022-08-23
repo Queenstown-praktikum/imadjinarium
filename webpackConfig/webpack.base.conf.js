@@ -102,6 +102,7 @@ module.exports = {
         { from: 'public/favicon.ico', to: _path('../dist') },
         { from: 'public/logo192.png', to: _path('../dist') },
         { from: 'public/logo512.png', to: _path('../dist') },
+        { from: 'src/assets', to: _path('../dist') }
       ],
     }),
   ],
