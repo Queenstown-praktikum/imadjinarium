@@ -32,7 +32,20 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-modules-typescript-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                // localIdentName: '[local]--[hash:base64]',
+              },
+              sourceMap: true,
+            },
+          },
+          { loader: 'sass-loader' },
+        ],
       },
       {
         test: /\.svg$/i,

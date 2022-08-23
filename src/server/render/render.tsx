@@ -11,7 +11,8 @@ export function render(req: Request, res: Response) {
   const { devMiddleware } = res.locals.webpack;
   const jsonWebpackStats = devMiddleware.stats.toJson();
   const { assetsByChunkName } = jsonWebpackStats;
-  const script = assetsByChunkName.main[0];
+  // const css = assetsByChunkName.main[0];
+  const script = assetsByChunkName.main[1];
 
   delete require.cache[require.resolve('../../../dist/ssr.bundle.js')];
 

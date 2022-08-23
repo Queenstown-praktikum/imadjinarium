@@ -49,7 +49,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[local]--[hash:base64]',
+                // localIdentName: '[local]--[hash:base64]',
               },
               sourceMap: true,
             },
@@ -81,10 +81,7 @@ module.exports = {
     new ReactRefreshPlugin({
       overlay: { sockIntegration: 'whm' },
     }),
-    new MiniCssExtractPlugin({
-      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
-    }),
+    new MiniCssExtractPlugin(),
     new InjectManifest({
       swSrc: './src/core/service-worker/sw.js',
       swDest: 'sw.js',
