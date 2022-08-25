@@ -9,7 +9,6 @@ module.exports = {
   target: 'node',
   mode: 'development',
   output: {
-    // filename: 'main-[hash:4].js',
     filename: 'ssr.bundle.js',
     path: _path('../dist'),
     publicPath: '/',

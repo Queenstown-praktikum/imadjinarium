@@ -3,8 +3,6 @@
  * Тут общие настройки как для PRODUCTION так и для DEVELOPMENT
  */
 
-// import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-
 const path = require('path');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -14,8 +12,6 @@ const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 const _path = (alias) => path.resolve(__dirname, alias);
-
-const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: ['@gatsbyjs/webpack-hot-middleware/client?path=/__webpack_hmr', _path('../index.tsx')],
