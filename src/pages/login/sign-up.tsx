@@ -4,12 +4,15 @@ import { FormWrapper, TextField } from '../../ui-kit';
 import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
 import { useUserSignUpMutation } from '../../redux/userApi';
 import { setUserData } from '../../redux/slices/user';
+import styles from './login.scss'
+import useCheckUser from './hooks/useCheckUser';
 
 export const SignUpPage: FC = () => {
   const [signUpUser, { data, isError, error }] = useUserSignUpMutation()
   const [regData, setRegData] = useState<any>({})
   const dispatch = useDispatch()
-
+  
+  useCheckUser()
   useEffect(() => {
     if (data) {
       dispatch(setUserData(data))
@@ -40,7 +43,7 @@ export const SignUpPage: FC = () => {
     action: handleSignUpUser,
   }]
 
-  return <div>
+  return <div className={styles.login_form}>
     <FormWrapper
       title="Регистрация"
       link={{
@@ -55,16 +58,17 @@ export const SignUpPage: FC = () => {
     >
       <>
         <TextField
+          name="login"
+          label="Логин"
+          onTextFieldChange={setRegistrationField}
+        />
+        
+        <TextField
           name="email"
           label="Почта"
           onTextFieldChange={setRegistrationField}
         />
 
-        <TextField
-          name="name"
-          label="Имя"
-          onTextFieldChange={setRegistrationField}
-        />
 
         <TextField
           name="phone"
