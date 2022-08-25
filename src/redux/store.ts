@@ -3,7 +3,7 @@ import { createLogger } from 'redux-logger';
 import { userReducer } from './slices/user';
 import { userApi } from './userApi';
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   user: userReducer,
 });
