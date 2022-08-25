@@ -1,4 +1,4 @@
-export const renderFullPage = (html: any, preloadedState: any, script: any, style: any) => `
+export const renderFullPage = (html: string, preloadedState: any, script: any, style: any) => `
     <!doctype html>
     <html>
       <head>

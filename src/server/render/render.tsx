@@ -26,12 +26,7 @@ export function render(req: Request, res: Response) {
     </StaticRouter>,
   );
 
-  // const html = fs.readFileSync(path.join(__dirname, '../../../public/index.html'), {
-  //   encoding: 'utf-8',
-  // });
-
   const preloadStore = store.getState();
-
   const html = renderFullPage(reactHtml, preloadStore, script, style);
 
   return res.status(200).send(html);
