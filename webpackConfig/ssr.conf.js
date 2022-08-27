@@ -1,14 +1,14 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const _path = (alias) => path.resolve(__dirname, alias);
 
 module.exports = {
-  entry: _path('../src/TestApp.tsx'),
+  entry: _path('../src/core/routing/routing.tsx'),
   target: 'node',
   mode: 'development',
   output: {
-    // filename: 'main-[hash:4].js',
     filename: 'ssr.bundle.js',
     path: _path('../dist'),
     publicPath: '/',
@@ -32,13 +32,13 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          { loader: 'style-loader' },
+          MiniCssExtractPlugin.loader,
           { loader: 'css-modules-typescript-loader' },
           {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[local]--[hash:base64]',
+                // localIdentName: '[local]--[hash:base64]',
               },
               sourceMap: true,
             },
@@ -64,5 +64,6 @@ module.exports = {
       },
     ],
   },
+  plugins: [new MiniCssExtractPlugin()],
   externals: [nodeExternals()],
 };

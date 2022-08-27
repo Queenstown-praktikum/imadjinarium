@@ -5,7 +5,7 @@ import { playersReducer } from './slices/players';
 import { userReducer } from './slices/user';
 import { userApi } from './userApi';
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   user: userReducer,
   cards: cardsReducer,
