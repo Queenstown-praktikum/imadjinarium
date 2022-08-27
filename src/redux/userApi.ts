@@ -42,7 +42,10 @@ export const userApi = createApi({
         url: '/user/profile/avatar',
         method: 'PUT',
         body,
-        headers: { accept: 'application/json' },
+        headers: {
+          accept: 'application/json',
+          'Content-Type': 'multipart/form-data'
+        },
       }}
     }),
     logout: build.mutation({

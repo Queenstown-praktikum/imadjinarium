@@ -5,14 +5,14 @@ import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
 import { useUserSignUpMutation } from '../../redux/userApi';
 import { setUserData } from '../../redux/slices/user';
 import styles from './login.scss'
-import useCheckUser from './hooks/useCheckUser';
+// import useCheckUser from './hooks/useCheckUser';
 
 export const SignUpPage: FC = () => {
   const [signUpUser, { data, isError, error }] = useUserSignUpMutation()
   const [regData, setRegData] = useState<any>({})
   const dispatch = useDispatch()
   
-  useCheckUser()
+  // useCheckUser()
   useEffect(() => {
     if (data) {
       dispatch(setUserData(data))
@@ -20,16 +20,19 @@ export const SignUpPage: FC = () => {
   }, [data, dispatch])
 
   const setRegistrationField = useCallback((name: string, value: string) => {
+
     setRegData({
       ...regData,
-      [name]: value
+      [name]: value,
     })
   }, [regData, setRegData])
 
   const handleSignUpUser = useCallback(() => {
+    console.log(regData)
+    // TODO(Egor) add check pass and re-pass
     signUpUser({
-      first_name: regData.name,
-      second_name: regData.surname,
+      first_name: regData.login,
+      second_name: regData.login,
       login: regData.login,
       email: regData.email,
       password: regData.password,
