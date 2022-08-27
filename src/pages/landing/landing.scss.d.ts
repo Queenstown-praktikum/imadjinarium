@@ -5,6 +5,7 @@ interface CssExports {
   'landing-info': string;
   'landing-info__item': string;
   'landing-play-button': string;
+  'landing__desc': string;
   'landing__title': string;
 }
 export const cssExports: CssExports;

@@ -102,8 +102,8 @@
     "workbox-webpack-plugin": "6.5.4"
   },
   "dependencies": {
-    "@pmmmwh/react-refresh-webpack-plugin": "github:pmmmwh/react-refresh-webpack-plugin",
     "@gatsbyjs/webpack-hot-middleware": "github:renrizzolo/webpack-hot-middleware#patch-1",
+    "@pmmmwh/react-refresh-webpack-plugin": "github:pmmmwh/react-refresh-webpack-plugin",
     "@reduxjs/toolkit": "1.8.3",
     "@sentry/react": "7.7.0",
     "@sentry/rrweb": "0.3.3",
@@ -120,6 +120,7 @@
     "react-refresh": "^0.14.0",
     "react-router": "6.3.0",
     "react-router-dom": "6.3.0",
+    "react-slick": "0.29.0",
     "react-transition-group": "4.4.5",
     "redux-logger": "3.0.6",
     "rrweb": "2.0.0-alpha.0",
