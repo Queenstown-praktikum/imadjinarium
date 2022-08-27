@@ -17,10 +17,8 @@ const Avatar = () => {
     onDrop: useCallback(async (files: File[]) => {
       const formData = new FormData();
       const [file] = files;
-      console.log(files, file)
-      formData.append('file', file);
+      formData.append('avatar', file);
 
-      console.log('formData', formData.getAll('file'))
       await changeAvatar(formData)
     }, [])
   });
