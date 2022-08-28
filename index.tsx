@@ -3,23 +3,18 @@ import ReactDOM from 'react-dom/client';
 import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
 import { Provider } from 'react-redux';
-import SentryRRWeb from '@sentry/rrweb';
+import { BrowserRouter } from 'react-router-dom';
+import { configureStore } from '@reduxjs/toolkit';
+import { createLogger } from 'redux-logger';
 import { reducer } from './src/redux/store';
 import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error.page';
 import { registerServiceWorker } from './src/core/service-worker/sw-registration';
-import { BrowserRouter } from 'react-router-dom';
 import Routing from './src/core/routing/routing';
-import { configureStore } from '@reduxjs/toolkit';
 import { userApi } from './src/redux/userApi';
-import { createLogger } from 'redux-logger';
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',
-  integrations: [new BrowserTracing(), new SentryRRWeb({})],
-
-  // Set tracesSampleRate to 1.0 to capture 100%
-  // of transactions for performance monitoring.
-  // We recommend adjusting this value in production
+  integrations: [new BrowserTracing()],
   tracesSampleRate: 1.0,
 });
 
