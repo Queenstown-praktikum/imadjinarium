@@ -9,7 +9,7 @@ export const reducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   user: userReducer,
   cards: cardsReducer,
-  players: playersReducer
+  players: playersReducer,
 });
 
 const loggerMiddleware = createLogger();

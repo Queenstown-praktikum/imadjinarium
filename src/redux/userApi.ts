@@ -1,7 +1,7 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import config from './config'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import config from './config';
 
-const userTagType = 'USER_API'
+export const userTagType = 'USER_API';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -13,6 +13,7 @@ export const userApi = createApi({
   endpoints: (build) => ({
     getUser: build.query({
       query: () => '/auth/user',
+      providesTags: () => [userTagType],
     }),
     userSignIn: build.mutation({
       query: (body) => ({
@@ -21,12 +22,12 @@ export const userApi = createApi({
         body,
         responseHandler: (response: Response) => {
           if (response.status === 200) {
-            return response.text()
+            return response.text();
           }
-          return response.json()
+          return response.json();
         },
       }),
-      invalidatesTags: (result) => result ? [{ type: userTagType }] : []
+      invalidatesTags: (result) => (result ? [{ type: userTagType }] : []),
     }),
     userSignUp: build.mutation({
       query: (body) => ({
@@ -37,30 +38,32 @@ export const userApi = createApi({
     }),
     changeAvatar: build.mutation({
       query: (body) => {
-        console.log('check body', body)
+        console.log('check body', body);
         return {
-        url: '/user/profile/avatar',
-        method: 'PUT',
-        body,
-        headers: {
-          accept: 'application/json',
-          'Content-Type': 'multipart/form-data'
-        },
-      }}
+          url: '/user/profile/avatar',
+          method: 'PUT',
+          body,
+          headers: {
+            accept: 'application/json',
+            'Content-Type': 'multipart/form-data',
+          },
+        };
+      },
     }),
     logout: build.mutation({
       query: () => ({
         url: '/auth/logout',
         method: 'POST',
       }),
-    })
-  })
-})
+    }),
+  }),
+});
 
 export const {
+  useLazyGetUserQuery,
   useGetUserQuery,
   useUserSignInMutation,
   useUserSignUpMutation,
   useChangeAvatarMutation,
   useLogoutMutation,
-} = userApi
+} = userApi;
