@@ -1,6 +1,7 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const _path = (alias) => path.resolve(__dirname, alias);
 
@@ -64,6 +65,17 @@ module.exports = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/core/service-worker/manifest.json', to: _path('../dist') },
+        { from: 'public/favicon.ico', to: _path('../dist') },
+        { from: 'public/logo192.png', to: _path('../dist') },
+        { from: 'public/logo512.png', to: _path('../dist') },
+        { from: 'src/assets', to: _path('../dist') },
+      ],
+    }),
+  ],
   externals: [nodeExternals()],
 };
