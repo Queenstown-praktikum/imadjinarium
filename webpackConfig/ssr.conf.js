@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const _path = (alias) => path.resolve(__dirname, alias);
 
 module.exports = {
-  entry: _path('../src/core/routing/routing.tsx'),
+  entry: _path('../client/core/routing/routing.tsx'),
   target: 'node',
   mode: 'development',
   output: {
@@ -19,7 +19,7 @@ module.exports = {
     alias: {
       // Тут будут алиасы к папкам
       // 'Components': _path('src/Components/'),
-      ['ui-kit']: _path('../src/ui-kit/'),
+      ['ui-kit']: _path('../client/ui-kit/'),
     },
   },
   module: {

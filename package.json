@@ -5,15 +5,15 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack-dev-server --config ./webpackConfig/webpack.dev.conf.js",
-    "start:server": "tsc --project ./src/server && node ./server-dist/server/index.js",
+    "start:server": "tsc --project server && node ./server-dist/server/index.js",
     "build:client": "webpack --max_old_space_size=2560 --config ./webpackConfig/webpack.prod.conf.js",
     "build:client:ssr": "webpack --config ./webpackConfig/ssr.conf.js --watch",
-    "build:server": "tsc --project ./src/server",
-    "lint": "eslint src/**/*.{ts,tsx}",
-    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "build:server": "tsc --project server",
+    "lint": "eslint client/**/*.{ts,tsx}",
+    "lint:fix": "eslint --fix 'client/**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint src/**/*.{css,scss}",
-    "stylelint:fix": "stylelint --fix src/**/*.{css,scss}",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json,less,sass}' --config ./.prettierrc",
+    "stylelint:fix": "stylelint --fix client/**/*.{css,scss}",
+    "format": "prettier --write 'client/**/*.{js,jsx,ts,tsx,css,md,json,less,sass}' --config ./.prettierrc",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -21,8 +21,8 @@
     "test": "jest"
   },
   "lint-staged": {
-    "src/**/*.(js|jsx|ts|tsx)": "eslint --fix",
-    "src/**/*.(css|sass|scss)": "stylelint --fix"
+    "client/**/*.(js|jsx|ts|tsx)": "eslint --fix",
+    "client/**/*.(css|sass|scss)": "stylelint --fix"
   },
   "repository": {
     "type": "git",

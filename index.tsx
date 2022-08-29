@@ -6,11 +6,11 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
-import { reducer } from './src/redux/store';
-import { UnexpectedErrorPage } from './src/pages/unexpected-error/unexpected-error.page';
-import { registerServiceWorker } from './src/core/service-worker/sw-registration';
-import Routing from './src/core/routing/routing';
-import { userApi } from './src/redux/userApi';
+import { reducer } from './client/redux/store';
+import { UnexpectedErrorPage } from './client/pages/unexpected-error/unexpected-error.page';
+import { registerServiceWorker } from './client/core/service-worker/sw-registration';
+import Routing from './client/core/routing/routing';
+import { userApi } from './client/redux/userApi';
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',

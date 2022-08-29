@@ -26,7 +26,7 @@ module.exports = {
     alias: {
       // Тут будут алиасы к папкам
       // 'Components': _path('src/Components/'),
-      ['ui-kit']: _path('../src/ui-kit/'),
+      ['ui-kit']: _path('../client/ui-kit/'),
     },
   },
   module: {
@@ -79,17 +79,17 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new InjectManifest({
-      swSrc: './src/core/service-worker/sw.js',
+      swSrc: './client/core/service-worker/sw.js',
       swDest: 'sw.js',
       maximumFileSizeToCacheInBytes: 9000000,
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'src/core/service-worker/manifest.json', to: _path('../dist') },
+        { from: 'client/core/service-worker/manifest.json', to: _path('../dist') },
         { from: 'public/favicon.ico', to: _path('../dist') },
         { from: 'public/logo192.png', to: _path('../dist') },
         { from: 'public/logo512.png', to: _path('../dist') },
-        { from: 'src/assets', to: _path('../dist') }
+        { from: 'assets', to: _path('../dist') },
       ],
     }),
   ],

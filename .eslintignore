@@ -2,4 +2,4 @@
 node_modules/*
 dist/*
 webpackConfig/*
-src/ui-kit/storybook-introduction/*
+client/ui-kit/storybook-introduction/*
