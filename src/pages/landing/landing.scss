@@ -1,6 +1,7 @@
 .landing {
   display: flex;
   flex-direction: column;
+  text-align: justify;
 
   &__title {
     margin-top: 50px;
@@ -11,10 +12,10 @@
   }
 
   &__desc {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 24px;
     padding: 20px;
-    color: var(--color-white);
+    color: var(--color-grey-light);
 
     span {
       font-size: 18px;
