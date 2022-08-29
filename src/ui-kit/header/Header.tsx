@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
       </Link>
       {user.id && (
         <div className={styles.header__link} onClick={handleLogout}>
-          logout
+          Выход
         </div>
       )}
     </header>

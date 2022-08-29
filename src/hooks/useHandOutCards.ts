@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPlayer, playersSelectors, PlayerType } from '../redux/slices/players';
 import { cardsSelectors, setUserCards } from '../redux/slices/cards';
@@ -28,7 +28,7 @@ const mockPlayer2: PlayerType = {
 
 export const useHandOutCards = () => {
   const dispatch = useDispatch();
-
+  const [value, setValue] = useState<string>('');
   const user = useSelector(userSelectors.user);
   const players = useSelector(playersSelectors.players);
   const usersCards = useSelector(cardsSelectors.cardsUser);
@@ -59,5 +59,5 @@ export const useHandOutCards = () => {
     });
   }, [players]);
 
-  return { usersCards, user };
+  return { usersCards, user, value, setValue };
 };
