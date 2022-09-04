@@ -6,7 +6,7 @@ import styles from './landing.scss';
 export const LandingPage: FC = () => {
   const navigate = useNavigate();
   const handleClickButton = () => {
-    navigate('/game/initial');
+    navigate('/game/round-intro-leading');
   };
   return (
     <main className={styles.landing}>
@@ -27,7 +27,7 @@ export const LandingPage: FC = () => {
         только в том случае, если его карточку угадают, но не все.
       </p>
       <div className={styles.landing__wrapper_button}>
-        <Button label="Играть" onClick={handleClickButton} />
+        <Button label='Играть' onClick={handleClickButton} />
       </div>
     </main>
   );

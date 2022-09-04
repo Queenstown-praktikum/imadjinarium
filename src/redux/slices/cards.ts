@@ -2,10 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ApplicationState } from '../store';
 
 type IdUser = number;
+export type UserDataProps = Record<IdUser, number[]>;
 
 type StateType = {
   data: number[];
-  user_data: Record<IdUser, number[]>;
+  user_data: UserDataProps;
 };
 
 const initialState: StateType = {
@@ -25,9 +26,9 @@ const cardsSlice = createSlice({
       state.data = [];
     },
     setUserCards: (state: StateType, action: PayloadAction<{ id: number; data: number[] }>) => ({
-        ...state,
-        user_data: { ...state.user_data, [action.payload.id]: [...action.payload.data] },
-      }),
+      ...state,
+      user_data: { ...state.user_data, [action.payload.id]: [...action.payload.data] },
+    }),
   },
 });
 

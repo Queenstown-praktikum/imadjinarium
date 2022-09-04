@@ -2,6 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'round-results': string;
+  'round-results__button': string;
   'round-results__card': string;
   'round-results__card_primary': string;
   'round-results__cards': string;

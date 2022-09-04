@@ -4,12 +4,14 @@ import { cardsReducer } from './slices/cards';
 import { playersReducer } from './slices/players';
 import { userReducer } from './slices/user';
 import { userApi } from './userApi';
+import { gameReducer } from './slices/game';
 
 export const reducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   user: userReducer,
   cards: cardsReducer,
   players: playersReducer,
+  game: gameReducer,
 });
 
 const loggerMiddleware = createLogger();

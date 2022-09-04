@@ -2,8 +2,6 @@
 // Please do not change this file!
 interface CssExports {
   'player-selection-page': string;
-  'player-selection-page__card': string;
-  'player-selection-page__cards': string;
   'player-selection-page__desc': string;
   'player-selection-page__input': string;
   'player-selection-page__label': string;

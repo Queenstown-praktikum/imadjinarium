@@ -17,17 +17,7 @@
     color: var(--color-grey);
   }
 
-  &__cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 16px;
-    margin-top: 20px;
-    width: 100%;
-  }
 
-  &__card {
-    height: 341px;
-  }
 
   &__input {
     margin-top: 50px;

@@ -13,11 +13,11 @@ export interface IUser {
 }
 
 const initialState: IUser = {
-  id: 0,
-  first_name: '',
-  second_name: '',
+  id: 3,
+  first_name: 'Дмитрий',
+  second_name: 'Дрозов',
   display_name: '',
-  login: '',
+  login: 'drozdov',
   email: '',
   phone: '',
   avatar: '',

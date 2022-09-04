@@ -40,15 +40,19 @@ const playersSlice = createSlice({
       return state;
     },
     updatePlayers: (state: PlayerMapType, action: PayloadAction<PlayerMapType>) => action.payload,
+    updatePlayer: (state: PlayerMapType, action: PayloadAction<PlayerType>) => ({
+      ...state,
+      [action.payload.id]: action.payload,
+    }),
   },
 });
 
 const {
   reducer: playersReducer,
-  actions: { addPlayer, setPlayerCards, updatePlayers },
+  actions: { addPlayer, setPlayerCards, updatePlayers, updatePlayer },
 } = playersSlice;
 
-export { playersReducer, addPlayer, setPlayerCards, updatePlayers };
+export { playersReducer, addPlayer, setPlayerCards, updatePlayers, updatePlayer };
 
 export const playersSelectors = {
   players: (s: ApplicationState) => s.players,

@@ -3,10 +3,16 @@
 interface CssExports {
   'instruction__leading-block': string;
   'round-intro': string;
+  'round-intro__block-control': string;
   'round-intro__button': string;
+  'round-intro__desc': string;
+  'round-intro__input': string;
   'round-intro__instruction': string;
+  'round-intro__label': string;
   'round-intro__round-count': string;
   'round-intro__round-count_all': string;
+  'round-intro__wrapper-button': string;
+  'round-intro__wrapper-input': string;
 }
 export const cssExports: CssExports;
 export default cssExports;
