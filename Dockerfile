@@ -1,13 +1,14 @@
-FROM node:latest
+FROM node:14
 
 WORKDIR /var/www
 
-COPY package*.json ./
-
-RUN npm i -f
-
 COPY . .
+COPY package.json .
 
-EXPOSE 3000
+RUN npm install
+RUN npm run build:client:ssr
 
-CMD ["npm", "run", "server"]
+ENV PORT 80
+
+CMD npm run start:server
+

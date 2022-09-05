@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  server-app:
+    container_name: server-app
+    build:
+      context: ./server
+    networks:
+      - containers_network
+
+  postgres:
+    container_name: postgres_imadjinarium
+    image: postgres:14.3-alpine
+    ports:
+      - "5002:5432"
+    volumes:
+      - ./server/db/postgresdata:/var/lib/postgresql/data
+      - ./server/db/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
+    environment:
+      - POSTGRES_USER=queenstown
+      - POSTGRES_PASSWORD=queenstown
+      - POSTGRES_DB=postgres_imadjinarium
+    restart: always
+    networks:
+      - containers_network
+
+networks:
+  containers_network:
+    driver: bridge
+
