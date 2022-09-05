@@ -15,7 +15,6 @@ services:
       - "5002:5432"
     volumes:
       - ./server/db/postgresdata:/var/lib/postgresql/data
-      - ./server/db/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
     environment:
       - POSTGRES_USER=queenstown
       - POSTGRES_PASSWORD=queenstown
