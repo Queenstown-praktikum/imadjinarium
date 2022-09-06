@@ -11,6 +11,7 @@ import { UnexpectedErrorPage } from './client/pages/unexpected-error/unexpected-
 import { registerServiceWorker } from './client/core/service-worker/sw-registration';
 import Routing from './client/core/routing/routing';
 import { userApi } from './client/redux/userApi';
+import { topicApi } from './client/redux/topicApi';
 
 Sentry.init({
   dsn: 'https://291227dabf594d61b4b8435635794c05@o1321771.ingest.sentry.io/6578460',
@@ -27,6 +28,7 @@ const store = configureStore({
       serializableCheck: false,
     })
       .concat(userApi.middleware)
+      .concat(topicApi.middleware)
       .concat(loggerMiddleware),
   // @ts-ignore
   preloadedState: window.__PRELOADED_STATE__,

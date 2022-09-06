@@ -20,7 +20,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use('/user', UserRouter);
-app.use('/topic', TopicRouter);
+app.use('/topics', TopicRouter);
 app.use(express.static(path.join(__dirname, '../../dist/')));
 app.use(middleware);
 

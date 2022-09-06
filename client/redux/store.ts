@@ -4,12 +4,14 @@ import { cardsReducer } from './slices/cards';
 import { playersReducer } from './slices/players';
 import { userReducer } from './slices/user';
 import { userApi } from './userApi';
+import { topicApi } from './topicApi';
 
 export const reducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
+  [topicApi.reducerPath]: topicApi.reducer,
   user: userReducer,
   cards: cardsReducer,
-  players: playersReducer
+  players: playersReducer,
 });
 
 const loggerMiddleware = createLogger();
@@ -21,6 +23,7 @@ export const store = configureStore({
       serializableCheck: false,
     })
       .concat(userApi.middleware)
+      .concat(topicApi.middleware)
       .concat(loggerMiddleware),
 });
 

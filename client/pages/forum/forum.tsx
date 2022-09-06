@@ -1,38 +1,48 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback } from 'react';
 import cn from 'classnames';
 import { Button } from '../../ui-kit';
 import styles from './forum.scss';
 import { Search } from './sub-components/search/search';
-import { DataTheme, DataThemeComments } from './mock';
-import { ItemTheme } from './sub-components/item-theme/item-theme';
-import { DataPropsItem, IdItemTheme } from './types';
+import { DataThemeComments } from './mock';
 import { WindowsComments } from './windows-comments';
+import { useDeleteTopicMutation, useGetTopicsQuery } from '../../redux/topicApi';
+import { ItemTheme } from './sub-components/item-theme/item-theme';
 
 export const Forum: FC = () => {
-  const [dataTheme] = useState<Record<IdItemTheme, DataPropsItem>>(DataTheme);
+  const { data: topics, isLoading, isError } = useGetTopicsQuery();
+  const [deleteTopic] = useDeleteTopicMutation();
 
-  const deleteItemTheme = (id: IdItemTheme) => () => {
-    // eslint-disable-next-line no-console
-    console.log({ id });
-  };
+  const handleDelete = useCallback(
+    (id: number) => () => {
+      deleteTopic(id);
+    },
+    [deleteTopic],
+  );
 
-  const createTheme = () => {
-    // eslint-disable-next-line no-console
-    console.log('create');
-  };
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!topics) {
+    return null;
+  }
 
   return (
     <div className={cn(styles.forum, 'fullscreen', 'centered')}>
       <div className={cn(styles.forum__left)}>
-        <Button onClick={createTheme} label='Создать тему' />
+        <Button onClick={() => {}} label='Создать тему' />
         <div className={cn(styles['forum__wrapper-search'])}>
           <Search type='search' placeholder='Поиск по темам' />
         </div>
 
         <div className={cn(styles.forum__themes)}>
-          {Object.entries(dataTheme).map(([key, item]) => (
-            <div key={key} className={cn(styles['forum__wrapper-theme'])}>
-              <ItemTheme data={item} deleteItem={deleteItemTheme} />
+          {topics.map(({ id, name, createdAt }) => (
+            <div key={id} className={cn(styles['forum__wrapper-theme'])}>
+              <ItemTheme data={{ id, title: name, date: createdAt.toString() }} deleteItem={handleDelete} />
             </div>
           ))}
         </div>

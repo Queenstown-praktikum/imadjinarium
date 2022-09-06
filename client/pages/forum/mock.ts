@@ -1,28 +1,4 @@
-import { DataPropsItem, DataThemeProps, IdItemTheme } from './types';
-
-export const DataTheme: Record<IdItemTheme, DataPropsItem> = {
-  0: {
-    id: 0,
-    title: 'Тема 1',
-    date: '',
-  },
-  1: {
-    id: 1,
-    title: 'npm is the world largest software registry.',
-    date: '',
-  },
-  2: {
-    id: 2,
-    title: 'The CLI runs from a terminal, and is how most developers interact with npm.',
-    date: '',
-  },
-  3: {
-    id: 3,
-    title:
-      'The CLI runs from a terminal, and is how most developers interact with npm. The CLI runs from a terminal, and is how most developers interact with npm.',
-    date: '',
-  },
-};
+import { DataThemeProps } from './types';
 
 export const DataThemeComments: DataThemeProps = {
   title: 'Заголовок выбранной темы',

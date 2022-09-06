@@ -1,5 +1,3 @@
-export type IdItemTheme = number;
-
 export type DataPropsItem = {
   id: number;
   title: string;
@@ -8,7 +6,7 @@ export type DataPropsItem = {
 
 export type ItemThemeProps = {
   data: DataPropsItem;
-  deleteItem: (id: IdItemTheme) => () => void;
+  deleteItem: (id: number) => () => void;
 };
 
 export type CommentProps = {
