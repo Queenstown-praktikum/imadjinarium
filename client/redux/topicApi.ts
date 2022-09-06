@@ -11,7 +11,7 @@ type Topic = {
 
 export const topicApi = createApi({
   reducerPath: 'topicApi',
-  tagTypes: ['Topic'],
+  tagTypes: ['Topics'],
   baseQuery: fetchBaseQuery({
     baseUrl: config.backendURL,
     credentials: 'include',
@@ -21,8 +21,8 @@ export const topicApi = createApi({
       query: () => 'topics',
       providesTags: (result) =>
         result
-          ? [...result.map(({ id }) => ({ type: 'Topic' as const, id })), { type: 'Topic', id: 'LIST' }]
-          : [{ type: 'Topic', id: 'LIST' }],
+          ? [...result.map(({ id }) => ({ type: 'Topics' as const, id })), { type: 'Topics', id: 'LIST' }]
+          : [{ type: 'Topics', id: 'LIST' }],
     }),
     addTopic: build.mutation<Topic, Partial<Topic>>({
       query: (body) => ({
@@ -30,7 +30,7 @@ export const topicApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: [{ type: 'Topic', id: 'LIST' }],
+      invalidatesTags: [{ type: 'Topics', id: 'LIST' }],
     }),
     deleteTopic: build.mutation<{ success: boolean; id: number }, number>({
       query(id) {
@@ -39,7 +39,7 @@ export const topicApi = createApi({
           method: 'DELETE',
         };
       },
-      invalidatesTags: (result, error, id) => [{ type: 'Topic', id }],
+      invalidatesTags: (result, error, id) => [{ type: 'Topics', id }],
     }),
   }),
 });
