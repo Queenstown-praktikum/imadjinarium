@@ -8,7 +8,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 import { reducer } from './client/redux/store';
 import { UnexpectedErrorPage } from './client/pages/unexpected-error/unexpected-error.page';
-import { registerServiceWorker } from './client/core/service-worker/sw-registration';
 import Routing from './client/core/routing/routing';
 import { userApi } from './client/redux/userApi';
 import { topicApi } from './client/redux/topicApi';
@@ -49,4 +48,4 @@ ReactDOM.hydrateRoot(
   </Sentry.ErrorBoundary>,
 );
 
-registerServiceWorker();
+// registerServiceWorker(); // todo: разобраться с "new app update is available!"
