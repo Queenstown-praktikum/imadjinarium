@@ -8,7 +8,7 @@ interface CssExports {
   'item-status__status': string;
   'sp': string;
   'sp__body': string;
-  'sp__item': string;
+  'sp__header': string;
   'sp__title': string;
 }
 export const cssExports: CssExports;

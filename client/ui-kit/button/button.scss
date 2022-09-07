@@ -33,10 +33,24 @@
     padding: 12px;
     font-size: 18px;
   }
-}
 
-@media (hover: hover) and (pointer: fine) {
-  .btn:hover {
+  &:hover {
     cursor: pointer;
   }
+
+  &:active {
+    opacity: .5;
+  }
+
+  &:disabled , &__primary:disabled{
+    background: #1B1B1B;
+    color: var(--color-grey);
+  }
+
+  &:disabled:hover, &__primary:disabled:hover {
+    cursor: default;
+    opacity: 1;
+  }
+
 }
+

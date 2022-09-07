@@ -5,6 +5,7 @@ import { playersReducer } from './slices/players';
 import { userReducer } from './slices/user';
 import { userApi } from './userApi';
 import { topicApi } from './topicApi';
+import { gameReducer } from './slices/game';
 
 export const reducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
@@ -12,6 +13,7 @@ export const reducer = combineReducers({
   user: userReducer,
   cards: cardsReducer,
   players: playersReducer,
+  game: gameReducer,
 });
 
 const loggerMiddleware = createLogger();

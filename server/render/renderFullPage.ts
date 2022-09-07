@@ -10,7 +10,7 @@ export const renderFullPage = (html: string, preloadedState: any, script: any, s
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
-        <link rel="manifest" href='manifest.json'>
+        <link rel="manifest" href='./manifest.json'>
            <link rel="stylesheet" href="${style}">
         <title>Imadjinarium</title>
       </head>

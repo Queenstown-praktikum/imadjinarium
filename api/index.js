@@ -1,6 +1,5 @@
 const { Sequelize } = require('sequelize');
 
-// todo: разобраться с SSL required и подключиться к облачной базе
 const sequelize = new Sequelize({
   dialect: 'postgres',
   host: 'localhost',

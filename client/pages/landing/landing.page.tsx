@@ -1,7 +1,14 @@
 import React, { FC } from 'react';
+import { Button } from 'ui-kit';
+import { useNavigate } from 'react-router-dom';
 import styles from './landing.scss';
 
-export const LandingPage: FC = () => (
+export const LandingPage: FC = () => {
+  const navigate = useNavigate();
+  const handleClickButton = () => {
+    navigate('/game/round-intro-leading');
+  };
+  return (
     <main className={styles.landing}>
       <p className={styles.landing__desc}>
         <span>Имаджинариум</span> – это настольная игра в ассоциации, всем игрокам будет выдано по 6 карточек с… как бы
@@ -19,8 +26,9 @@ export const LandingPage: FC = () => (
         Секрет в том, что ведущему нужно дать такую ассоциацию, чтобы она была очевидной, но не слишком. Очки он получит
         только в том случае, если его карточку угадают, но не все.
       </p>
-      <button className={styles['landing-play-button']} type='button'>
-        Играть
-      </button>
+      <div className={styles.landing__wrapper_button}>
+        <Button label='Играть' onClick={handleClickButton} />
+      </div>
     </main>
   );
+};

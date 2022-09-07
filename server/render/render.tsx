@@ -14,7 +14,7 @@ export function render(req: Request, res: Response) {
   const script = assetsByChunkName.main[1];
 
   delete require.cache[require.resolve('../../../dist/ssr.bundle.js')];
-
+  console.log({ assetsByChunkName });
   // eslint-disable-next-line global-require,import/no-unresolved
   const App = require('../../../dist/ssr.bundle').default;
 
