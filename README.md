@@ -22,8 +22,8 @@ git clone git@github.com:Queenstown-praktikum/imadjinarium.git
 
 ```json
   "lint-staged": {
-    "src/**/*.(js|jsx|ts|tsx)": "eslint --fix",
-    "src/**/*.(css|sass|scss)": "stylelint --fix"
+    "client/**/*.(js|jsx|ts|tsx)": "eslint --fix",
+    "client/**/*.(css|sass|scss)": "stylelint --fix"
   }
 ```
 
