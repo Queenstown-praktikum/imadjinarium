@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { addPlayer, playersSelectors, PlayerType, updatePlayer } from '../../redux/slices/players';
 import { cardsSelectors, setUserCards } from '../../redux/slices/cards';
 import { userSelectors } from '../../redux/slices/user';
-import { gameSelectors, updateAssociationText, updateLeaderUserId } from '../../redux/slices/game';
+import { gameSelectors, setPlayers, updateAssociationText, updateLeaderUserId } from '../../redux/slices/game';
 
 const mockPlayer1: PlayerType = {
   id: 1,
@@ -66,6 +66,7 @@ export const useHandOutCards = () => {
         votedCardId: null,
       }),
     );
+    dispatch(setPlayers({ data: [1, 2, 3] }));
     dispatch(updateLeaderUserId({ id: user.id }));
   }, []);
 
@@ -89,7 +90,6 @@ export const useHandOutCards = () => {
   }, [players]);
 
   const onChange = (e: React.FocusEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setData({ ...data, value: e.target.value });
   };
   const handleClickButton = () => {
