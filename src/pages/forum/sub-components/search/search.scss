@@ -1,0 +1,14 @@
+.search {
+  border: 1px solid #838383;
+  padding: 10px 20px;
+  color: black;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  border-radius: 10px;
+  width: 100%;
+
+  &:hover {
+    border: 1px solid #727272;
+  }
+}

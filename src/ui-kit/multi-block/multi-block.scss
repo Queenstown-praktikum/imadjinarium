@@ -1,0 +1,54 @@
+.mblock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 510px;
+  width: 400px;
+  background: #1B1B1B;
+  border-radius: 64px;
+
+  &_figures {
+    width: 346px;
+    height: 346px;
+    position: relative;
+
+    &-entering,
+    &-exiting {
+      & svg {
+        left: 86px !important;
+        top: 86px !important;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  & svg {
+    transition: 1000ms;
+    width: 173px;
+    height: 173px;
+    position: absolute;
+
+    &:nth-child(1) {
+      left: 0;
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      left: 0;
+      top: 173px;
+    }
+
+    &:nth-child(3) {
+      left: 173px;
+      top: 0;
+    }
+
+    &:nth-child(4) {
+      left: 173px;
+      top: 173px;
+    }
+  }
+
+
+
+}

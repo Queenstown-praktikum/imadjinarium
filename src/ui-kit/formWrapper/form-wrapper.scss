@@ -1,0 +1,59 @@
+.fw {
+  border-radius: 20px;
+  padding: 40px 40px 20px;
+  min-width: 470px;
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    & h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    &__link {
+      color: #2E62D3;
+    }
+  }
+
+
+  &_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    font-size: 16px;
+
+    & button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    &__main {
+      background: #3f6bea;
+      color: #fff;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+
+    &__secondary {
+      background: transparent;
+      color: #3f6bea;
+    }
+  }
+
+  &_formError {
+    display: block;
+    height: 20px;
+    font-size: 12px;
+    color: #cd6f6f;
+  }
+}

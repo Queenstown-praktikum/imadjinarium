@@ -1,0 +1,8 @@
+.navbar {
+  opacity: 0.4;
+
+  &__links {
+    display: flex;
+    gap: 8px;
+  }
+}

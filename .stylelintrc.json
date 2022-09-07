@@ -1,0 +1,18 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier"],
+  "rules": {
+    "indentation": 2,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "selector-class-pattern": null
+  },
+  "ignoreFiles": [
+    "dist/*",
+    "node_modules/*",
+    "storybook-introduction/*"
+  ]
+}
