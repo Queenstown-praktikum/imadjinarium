@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ApplicationState } from '../store';
 
 export interface IUser {
   id: number;
@@ -12,35 +13,32 @@ export interface IUser {
 }
 
 const initialState: IUser = {
-  id: 0,
-  first_name: '',
-  second_name: '',
+  id: 3,
+  first_name: 'Дмитрий',
+  second_name: 'Дрозов',
   display_name: '',
-  login: '',
+  login: 'drozdov',
   email: '',
   phone: '',
   avatar: '',
-}
+};
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUserData: (_, action: PayloadAction<IUser>) => ({...action.payload}),
+    setUserData: (_, action: PayloadAction<IUser>) => ({ ...action.payload }),
     clearUserData: () => initialState,
   },
 });
 
 const {
   reducer: userReducer,
-  actions: {
-    setUserData,
-    clearUserData,
-  },
+  actions: { setUserData, clearUserData },
 } = userSlice;
 
-export {
-  userReducer,
-  setUserData,
-  clearUserData,
+export { userReducer, setUserData, clearUserData };
+
+export const userSelectors = {
+  user: (s: ApplicationState) => s.user,
 };

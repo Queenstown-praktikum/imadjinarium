@@ -1,6 +1,7 @@
 .landing {
   display: flex;
   flex-direction: column;
+  text-align: justify;
 
   &__title {
     margin-top: 50px;
@@ -11,17 +12,27 @@
   }
 
   &__desc {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 24px;
     padding: 20px;
-    color: var(--color-white);
+    color: var(--color-grey-light);
 
     span {
       font-size: 18px;
       font-weight: 900;
     }
 
-    margin: 10px;
+    margin: 10px 0;
+  }
+
+  &__wrapper_button {
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  &__card {
+    width: 100px;
+    margin-right: 20px;
   }
 }
 

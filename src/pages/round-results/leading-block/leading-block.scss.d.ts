@@ -3,8 +3,8 @@
 interface CssExports {
   'leading-block': string;
   'leading-block__association': string;
-  'leading-block__association_narrow': string;
-  'leading-block__association_wide': string;
+  'leading-block__avatar': string;
+  'leading-block__header': string;
   'leading-block__title': string;
 }
 export const cssExports: CssExports;

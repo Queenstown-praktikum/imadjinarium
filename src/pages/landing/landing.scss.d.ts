@@ -5,8 +5,10 @@ interface CssExports {
   'landing-info': string;
   'landing-info__item': string;
   'landing-play-button': string;
+  'landing__card': string;
   'landing__desc': string;
   'landing__title': string;
+  'landing__wrapper_button': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

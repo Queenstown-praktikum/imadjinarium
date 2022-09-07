@@ -1,18 +1,45 @@
 .rules {
   display: flex;
   flex-direction: column;
+  text-align: justify;
 
   &__title {
+    color: var(--color-grey-light);
     margin-top: 50px;
     text-align: center;
-    font-weight: 500;
     font-size: 50px;
-    line-height: 50px;
+    line-height: 100px;
+    margin-bottom: 30px;
+    font-weight: 900;
   }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 50px;
+  }
+
+  &__left {
+    width: 100%;
+  }
+
+  &__right {
+    width: 100%;
+  }
+}
+
+.rules-wrapper-button {
+  width: 250px;
+  margin: 60px auto 0;
+}
+
+.rules-block{
+  max-width: 300px;
 }
 
 .rules-info {
   margin-top: 50px;
+  color: var(--color-grey);
 
   &__item {
     margin-top: 25px;
@@ -24,17 +51,18 @@
     }
 
     h4 {
+      color: var(--color-grey-light);
       font-style: italic;
       font-weight: 400;
-      margin-top: 10px;
+      margin: 20px 0;
       font-size: 20px;
       line-height: 20px;
     }
 
     p {
       margin-top: 10px;
-      font-size: 20px;
-      line-height: 20px;
+      font-size: 18px;
+      line-height: 24px;
     }
   }
 

@@ -13,17 +13,49 @@
   border-radius: 20px;
   border: 1px solid var(--color-grey);
 
+
+  &__voted-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    backdrop-filter: blur(40px);
+    border-radius: 10px;
+    margin: 5px 5px 0 0;
+  }
+
+  &__voted-name {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--color-white);
+  }
+
   &__caption {
     background: var(--color-black-light);
     color: var(--color-white);
     border-radius: 20px;
     padding: 8px;
-    margin: auto auto 0;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+  }
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    background: #afafaf;
+    border-radius: 50%;
+    border: none;
+    margin-right: 5px;
+
+    &[src=''] {
+      content:url("data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==");
+    }
   }
 
   &__label {
-    position: absolute;
-    top: var(--image-card-padding);
-    left: var(--image-card-padding);
+    position: relative;
   }
 }

@@ -2,9 +2,14 @@
 // Please do not change this file!
 interface CssExports {
   'rules': string;
+  'rules-block': string;
   'rules-info': string;
   'rules-info__item': string;
   'rules-play-button': string;
+  'rules-wrapper-button': string;
+  'rules__content': string;
+  'rules__left': string;
+  'rules__right': string;
   'rules__title': string;
 }
 export const cssExports: CssExports;
