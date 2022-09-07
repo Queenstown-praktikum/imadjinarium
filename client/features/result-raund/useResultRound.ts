@@ -38,7 +38,8 @@ export const useResultRound = () => {
       data = Object.values(data).reduce((acc, item) => {
         if (item.id !== leaderUserId) {
           return { ...acc, [item.id]: { ...item, score: item.score + 1 } };
-        } return { ...acc, [item.id]: item };
+        }
+        return { ...acc, [item.id]: item };
       }, {});
     } else {
       // проверяю выбрал ли кто карту ведущего
@@ -55,26 +56,27 @@ export const useResultRound = () => {
             // считаю сколько игроков выбрало карту ведущего
             const count = cardsVotedSelected.reduce((acc, i) => (i === cartIdLeader ? acc++ : acc), 0);
             return { ...acc, [item.id]: { ...item, score: item.score + count + 3 } };
-          } 
-            if (item.votedCardId === cartIdLeader) {
-              return { ...acc, [item.id]: { ...item, score: item.score + 3 } };
-            }
-            return { ...acc, [item.id]: item };
-          
+          }
+          if (item.votedCardId === cartIdLeader) {
+            return { ...acc, [item.id]: { ...item, score: item.score + 3 } };
+          }
+          return { ...acc, [item.id]: item };
         }, {});
 
         data = Object.values(data).reduce((acc, item) => {
           if (item.selectedCardId) {
             const count = cardsVotedSelected.reduce((acc, i) => (i === item.selectedCardId ? acc++ : acc), 0);
             return { ...acc, [item.id]: { ...item, score: item.score + count } };
-          } return { ...acc, [item.id]: item };
+          }
+          return { ...acc, [item.id]: item };
         }, {});
       } else {
         // ведущий получает 0 очков остальные по 1
         data = Object.values(data).reduce((acc, item) => {
           if (item.id !== leaderUserId) {
             return { ...acc, [item.id]: { ...item, score: item.score + 1 } };
-          } return { ...acc, [item.id]: item };
+          }
+          return { ...acc, [item.id]: item };
         }, {});
       }
     }

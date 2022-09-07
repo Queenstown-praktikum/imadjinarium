@@ -39,6 +39,9 @@
     "react/require-default-props": ["error", {
       "ignoreFunctionalComponents": true
     }],
+    "no-param-reassign": 0,
+    "no-plusplus": "off",
+    "no-shadow": "off",
     "no-underscore-dangle": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
     "import/no-extraneous-dependencies": [
