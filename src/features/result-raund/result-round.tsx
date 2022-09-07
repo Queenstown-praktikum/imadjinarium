@@ -12,7 +12,7 @@ export const ResultRound = () => {
       {data &&
         Object.values(data).map((item) => (
             <div className={styles['result-round__item']} key={item.id}>
-              <ItemResult name={item.name} src={item.avatar} count={item.score} />
+              <ItemResult name={item.name}  count={item.score} />
             </div>
           ))}
       <Button label='К следущему ходу' onClick={handleClickButton} />
