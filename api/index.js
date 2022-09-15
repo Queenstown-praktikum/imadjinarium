@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 
+// todo: вынести в env file и добавить в docker-compose
 const sequelize = new Sequelize({
   dialect: 'postgres',
   host: 'localhost',

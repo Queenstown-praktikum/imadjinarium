@@ -1,10 +1,14 @@
 version: '3'
 
 services:
-  server-app:
-    container_name: server-app
+  app:
+    container_name: front-back
     build:
-      context: ./server
+      context: .
+    environment:
+      - PORT=80
+    ports:
+      - 8080:80
     networks:
       - containers_network
 
