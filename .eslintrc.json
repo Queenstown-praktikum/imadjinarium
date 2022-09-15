@@ -25,6 +25,7 @@
       "prettier"
   ],
   "rules": {
+    "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/click-events-have-key-events": "off",
     "react/jsx-props-no-spreading": "off",
     "import/extensions": "off",
@@ -38,6 +39,10 @@
     "react/require-default-props": ["error", {
       "ignoreFunctionalComponents": true
     }],
+    "no-param-reassign": 0,
+    "no-plusplus": "off",
+    "no-shadow": "off",
+    "no-underscore-dangle": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
     "import/no-extraneous-dependencies": [
       "error",

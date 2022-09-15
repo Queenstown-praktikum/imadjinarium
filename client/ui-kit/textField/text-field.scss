@@ -1,0 +1,41 @@
+.tf {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+
+  &_label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    text-align: left;
+    color: rgb(255 255 255 / 60%);
+    padding-bottom: 8px;
+
+    &__error {
+      color: #cd6f6f;
+    }
+  }
+
+  &_input {
+    outline: none;
+    background: #1B1B1B;
+    border-radius: 16px;
+    width: 100%;
+    border: 2px solid rgb(255 255 255 / 20%);
+    max-height: 48px;
+    padding: 16px 12px;
+    font-size: 16px;
+    color: #fff;
+
+    &__error {
+      border-bottom: 1px solid red;
+    }
+  }
+
+  &_textError {
+    color: #cd6f6f;
+    font-size: 14px;
+  }
+}

@@ -2,7 +2,7 @@ const path = require('path');
 const _path = (alias) => path.resolve(__dirname, alias);
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../client/**/*.stories.mdx', '../client/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -27,25 +27,22 @@ module.exports = {
         {
           loader: 'sass-loader',
           options: {
-            additionalData: '@import "src/styles/index";',
+            additionalData: '@import "client/styles/index";',
           },
         },
       ],
     });
 
     // https://stackoverflow.com/a/61706308/10331102
-    const fileLoaderRule = config.module.rules.find(
-      (rule) => rule.test && rule.test.test(".svg")
-    );
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'));
 
     fileLoaderRule.exclude = /\.svg$/;
 
     config.module.rules.push({
-        test: /\.svg$/,
-        enforce: "pre",
-        loader: require.resolve("@svgr/webpack")
+      test: /\.svg$/,
+      enforce: 'pre',
+      loader: require.resolve('@svgr/webpack'),
     });
-
 
     // Return the altered config
     return {
@@ -54,7 +51,7 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve?.alias,
-          ['ui-kit']: _path('../src/ui-kit/') 
+          ['ui-kit']: _path('../client/ui-kit/'),
         },
       },
     };

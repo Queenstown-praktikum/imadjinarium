@@ -1,0 +1,18 @@
+:root {
+  --layout-header-height: 60px;
+  --layout-header-margin-bottom: 50px;
+  --layout-padding: 20px;
+}
+
+.layout {
+  padding: var(--layout-padding);
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  &__block {
+    margin-top: 50px;
+  }
+}
