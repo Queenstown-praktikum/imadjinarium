@@ -1,7 +1,8 @@
 export type WrapperButtonType = {
-  styleType: 'main' | 'secondary';
+  styleType?: 'main' | 'secondary';
   label: string;
   action?: () => void;
+  buttonClass?: string;
 }
 
 export type FormWrapperProps = {

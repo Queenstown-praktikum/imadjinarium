@@ -9,12 +9,13 @@ const Button: FC<ButtonProps> = (props: ButtonProps) => {
     size = 'medium',
     backgroundColor,
     label,
+    buttonClass,
     ...otherProps
   } = props
   const mode = primary ? styles.btn__primary : styles.btn__secondary;
   return <button
     type="button"
-    className={cn(styles.btn, mode, styles[`btn__${size}`])}
+    className={cn(styles.btn, mode, styles[`btn__${size}`], buttonClass)}
     style={{ backgroundColor }}
     {...otherProps}
   >

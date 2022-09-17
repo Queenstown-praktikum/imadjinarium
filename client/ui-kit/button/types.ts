@@ -21,4 +21,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * Optional click handler
    */
   onClick?: () => void;
+  buttonClass?: string;
 }
