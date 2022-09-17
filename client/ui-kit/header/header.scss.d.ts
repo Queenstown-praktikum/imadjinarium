@@ -5,6 +5,7 @@ interface CssExports {
   'header__link': string;
   'header_emptyAva': string;
   'header_logo': string;
+  'header_menu': string;
 }
 export const cssExports: CssExports;
 export default cssExports;
