@@ -6,23 +6,25 @@ import { Cards } from '../../features/cards/cards';
 import { Input } from '../../ui-kit/input/input';
 import { Modal } from '../../ui-kit/modal/modal';
 import { StatusPanel } from '../../features/status-panel/status-panel';
-import { DataProps, useHandOutCards } from '../player-selection/useHandOutCards';
+// import { DataProps, useHandOutCards } from './useHandOutCards';
+import { useRound } from './useRound';
+// import { useModalStatusPanel } from './useModalStatusPanel';
 
 type RoundIntroPageProps = {
   rounds: {
     current: number;
     all: number;
   };
-  userRole: 'leading' | 'player';
 };
 
 const renderBlockControl = (
   userRole: string,
-  data: DataProps,
+  value: string,
   onChange: (e: React.FocusEvent<HTMLInputElement>) => void,
   handleClickButton: () => void,
+  selectedCard: number | null,
 ) => {
-  const idDisabled = data.value.length === 0 || data.id === null;
+  const idDisabled = value.length === 0 || selectedCard === null;
 
   switch (userRole) {
     case 'leading':
@@ -30,7 +32,7 @@ const renderBlockControl = (
         <div className={styles['round-intro__input']}>
           <span className={styles['round-intro__label']}>Ассоциация</span>
           <div className={styles['round-intro__wrapper-input']}>
-            <Input value={data.value} onChange={onChange} />
+            <Input value={value} onChange={onChange} />
             <Button label='Готово' disabled={idDisabled} onClick={handleClickButton} />
           </div>
         </div>
@@ -73,8 +75,18 @@ const renderInstruction = (userRole: string) => {
   }
 };
 
-export const RoundIntroPage: FC<RoundIntroPageProps> = ({ rounds, userRole }) => {
-  const { usersCards, user, data, onChange, handleClickButton, showModal, handleClickButtonCard } = useHandOutCards();
+const renderModal = () => (
+  // useModalStatusPanel();
+  <Modal>
+    <StatusPanel title='Ждем остальных игроков' />
+  </Modal>
+);
+export const RoundIntroPage: FC<RoundIntroPageProps> = ({ rounds }) => {
+  // const { usersCards, user, data, onChange, handleClickButton, showModal, handleClickButtonCard } = useHandOutCards();
+  const { role, activeUser, handleClickButtonCard, association, onChange, handleClickButton, selectedCard, showModal } =
+    useRound();
+
+  if (!activeUser) return null;
 
   return (
     <>
@@ -83,15 +95,11 @@ export const RoundIntroPage: FC<RoundIntroPageProps> = ({ rounds, userRole }) =>
           Ход {rounds.current}
           <span className={styles['round-intro__round-count_all']}> из {rounds.all}</span>
         </h3>
-        <div className={styles['round-intro__instruction']}>{renderInstruction(userRole)}</div>
-        <Cards data={usersCards} user={user} choiceCard={handleClickButtonCard} />
-        {renderBlockControl(userRole, data, onChange, handleClickButton)}
+        <div className={styles['round-intro__instruction']}>{renderInstruction(role)}</div>
+        <Cards data={activeUser.cards} choiceCard={handleClickButtonCard} />
+        {renderBlockControl(role, association, onChange, handleClickButton, selectedCard)}
       </div>
-      {showModal && (
-        <Modal>
-          <StatusPanel title='Ждем остальных игроков' />
-        </Modal>
-      )}
+      {showModal && renderModal()}
     </>
   );
 };

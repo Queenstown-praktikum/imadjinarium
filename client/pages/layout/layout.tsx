@@ -28,26 +28,25 @@ export const Layout: FC = () => {
 
   return (
     <div className={styles.layout}>
+      <Navbar
+        links={[
+          '/',
+          'login',
+          'rules',
+          'game/initial',
+          // 'game/player-selection',
+          'game/round-intro-leading',
+          'game/round-intro-player',
+          'game/round-results',
+          'game/forum',
+          'game/leaderboard',
+        ]}
+      />
       <Header avatarUrl={avatar} />
       <main>
         <Outlet />
       </main>
-      <div className={styles.layout__block}>
-        <Navbar
-          links={[
-            '/',
-            'login',
-            'rules',
-            'game/initial',
-            // 'game/player-selection',
-            'game/round-intro-leading',
-            'game/round-intro-player',
-            'game/round-results',
-            'game/forum',
-            'game/leaderboard',
-          ]}
-        />
-      </div>
+      <div className={styles.layout__block} />
     </div>
   );
 };

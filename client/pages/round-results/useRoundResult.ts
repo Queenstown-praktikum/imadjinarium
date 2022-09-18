@@ -1,7 +1,9 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { playersSelectors, PlayerType } from '../../redux/slices/players';
-import { gameSelectors } from '../../redux/slices/game';
+// import { playersSelectors, PlayerType } from '../../redux/slices/players';
+import { gameSelectors, ItemDataUserProps } from '../../redux/slices/game';
+// import { userSelectors } from '../../redux/slices/user';
+// import { useAppDispatch } from '../../hooks/redux';
 
 type DataProps = {
   id: number;
@@ -11,40 +13,45 @@ type DataProps = {
 };
 
 export const useRoundResult = () => {
-  const players = useSelector(playersSelectors.players);
+  // const dispatch = useAppDispatch();
   const leaderUserId = useSelector(gameSelectors.leaderUserId);
   const associationText = useSelector(gameSelectors.associationText);
 
+  const dataUser = useSelector(gameSelectors.dataUser);
+  const selectedCards = useSelector(gameSelectors.selectedCards);
+  const votedCards = useSelector(gameSelectors.votedCards);
+
   const [data, setDate] = useState<DataProps[]>([]);
-  const [leadPlayer, setLeadPlayer] = useState<PlayerType>();
+  const [leadPlayer, setLeadPlayer] = useState<ItemDataUserProps>();
 
   useEffect(() => {
-    if (!players || !leadPlayer) return;
+    if (!leadPlayer) return;
 
-    const localData: DataProps[] = Object.values(players).map((item) => {
+    const localData: DataProps[] = Object.values(dataUser).map((item) => {
       const localValeId: number[] = [];
 
-      Object.values(players).forEach((i) => {
-        if (item.selectedCardId === i.votedCardId) {
-          localValeId.push(i.id);
+      Object.entries(votedCards).forEach(([key, itemCard]) => {
+        const keyCard = Number(key);
+        if (selectedCards[item.id] === itemCard) {
+          localValeId.push(keyCard);
         }
       });
 
       return {
         id: item.id,
-        idCard: item.selectedCardId !== null ? item.selectedCardId : 0,
+        idCard: selectedCards[item.id],
         name: leadPlayer.id === item.id ? 'Ваша карта' : item.name,
         votedId: localValeId,
       };
     });
 
     setDate(localData);
-  }, [players, leadPlayer]);
+  }, [dataUser, selectedCards, votedCards, leadPlayer]);
 
   useEffect(() => {
-    if (!players || !leaderUserId) return;
-    setLeadPlayer(players[leaderUserId]);
-  }, [players, leaderUserId]);
+    if (!leaderUserId) return;
+    setLeadPlayer(dataUser[leaderUserId]);
+  }, [dataUser, leaderUserId]);
 
   return { data, leadPlayer, associationText };
 };

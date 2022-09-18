@@ -6,7 +6,7 @@ import styles from './landing.scss';
 export const LandingPage: FC = () => {
   const navigate = useNavigate();
   const handleClickButton = () => {
-    navigate('/game/round-intro-leading');
+    navigate('/game/initial');
   };
   return (
     <main className={styles.landing}>

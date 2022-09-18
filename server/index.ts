@@ -4,7 +4,7 @@ import middleware from './render/hmr';
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { connection } = require('../../api/index');
+// const { connection } = require('../../api/index');
 require('../../api/models/index');
 const { UserRouter } = require('../../api/routes/user');
 const TopicRouter = require('../../api/routes/topic.router');
@@ -15,13 +15,17 @@ const PORT = 8080;
 
 const port = process.env.PORT || PORT;
 
-connection();
+// connection();
 const app = express();
+
+//раздача статики
+app.use('/game', express.static(path.resolve(__dirname, '../../dist/')));
+app.use('/login', express.static(path.resolve(__dirname, '../../dist/')));
+// app.use('/', express.static(path.resolve(__dirname, '../../dist/')));
 
 app.use(bodyParser.json());
 app.use('/user', UserRouter);
 app.use('/topics', TopicRouter);
-app.use(express.static(path.join(__dirname, '../../dist/')));
 app.use(middleware);
 
 app.listen(port, () => {

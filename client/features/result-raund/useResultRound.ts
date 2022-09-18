@@ -1,98 +1,101 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { PlayerMapType, playersSelectors, updatePlayers } from '../../redux/slices/players';
-import { gameSelectors, updateLeaderUserId, updatePlayersRound } from '../../redux/slices/game';
+// import { playersSelectors } from '../../redux/slices/players';
+import {
+  filtersCardUsers,
+  gameSelectors,
+  resetSelectedCardUser,
+  resetVotedCardUser,
+  updateLeaderUserId,
+} from '../../redux/slices/game';
+
+type DataUser = {
+  id: number;
+  name: string;
+  count: number;
+};
 
 export const useResultRound = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [localData, setLocalData] = useState<PlayerMapType>();
-  const players = useSelector(playersSelectors.players);
+  const [localData, setLocalData] = useState<DataUser[]>([]);
+  // const players = useSelector(playersSelectors.players);
   const leaderUserId = useSelector(gameSelectors.leaderUserId);
   const playersId = useSelector(gameSelectors.playersId);
 
+  // const dataUser = useSelector(gameSelectors.dataUser);
+  const selectedCards = useSelector(gameSelectors.selectedCards);
+  const votedCards = useSelector(gameSelectors.votedCards);
+  const dataResultPage = useSelector(gameSelectors.dataResultPage);
+
+  console.log({ dataResultPage });
   useEffect(() => {
-    if (!players || !leaderUserId) return;
-
-    const leaderUser = players[leaderUserId];
-    const cartIdLeader = leaderUser?.selectedCardId;
-
-    // карты которые выбрали игроки
-    const cardsVotedSelected: number[] = [];
-
-    Object.values(players).forEach((item) => {
-      if (item.votedCardId !== null) {
-        cardsVotedSelected.push(item.votedCardId);
-      }
-    });
-
-    let data = { ...players };
-
-    // Все угадали карту ведущего
-    const isAllLeaderCars = cardsVotedSelected.every((item) => item === cartIdLeader);
-
-    if (isAllLeaderCars) {
-      // при условии что все угадали карту ведущего
-      // ведущий получает 0 очков остальные по 1
-      data = Object.values(data).reduce((acc, item) => {
-        if (item.id !== leaderUserId) {
-          return { ...acc, [item.id]: { ...item, score: item.score + 1 } };
-        }
-        return { ...acc, [item.id]: item };
-      }, {});
-    } else {
-      // проверяю выбрал ли кто карту ведущего
-      const isOneLeaderCards = cardsVotedSelected.some((item) => item === cartIdLeader);
-
-      if (isOneLeaderCards) {
-        // если хотя бы один выбрал карту ведущего
-        // ведущий получает 3 очка и по 1 за каждого кто угадал его карту
-        // тот кто угадал карту ведущего получает 3 очка
-        // и все игроки получают по 1 очку за тех кто выбрал их карту
-
-        data = Object.values(data).reduce((acc, item) => {
+    if (!dataResultPage?.length) return;
+    let data: DataUser[] = [];
+    const idUserSelectedCard = dataResultPage.filter((item) => item.votedId.length !== 0).map((item) => item.id);
+    if (leaderUserId && idUserSelectedCard.includes(leaderUserId)) {
+      // кто то угадал карту ведущего
+      if (idUserSelectedCard.length === 1) {
+        // карету ведущего угадали все
+        data = dataResultPage.map((item) => {
           if (item.id === leaderUserId) {
-            // считаю сколько игроков выбрало карту ведущего
-            const count = cardsVotedSelected.reduce((acc, i) => (i === cartIdLeader ? acc++ : acc), 0);
-            return { ...acc, [item.id]: { ...item, score: item.score + count + 3 } };
+            return {
+              id: item.id,
+              name: item.name,
+              count: 0,
+            };
           }
-          if (item.votedCardId === cartIdLeader) {
-            return { ...acc, [item.id]: { ...item, score: item.score + 3 } };
-          }
-          return { ...acc, [item.id]: item };
-        }, {});
-
-        data = Object.values(data).reduce((acc, item) => {
-          if (item.selectedCardId) {
-            const count = cardsVotedSelected.reduce((acc, i) => (i === item.selectedCardId ? acc++ : acc), 0);
-            return { ...acc, [item.id]: { ...item, score: item.score + count } };
-          }
-          return { ...acc, [item.id]: item };
-        }, {});
+          return {
+            id: item.id,
+            name: item.name,
+            count: item.votedId.length !== 0 ? 1 : 0,
+          };
+        });
       } else {
-        // ведущий получает 0 очков остальные по 1
-        data = Object.values(data).reduce((acc, item) => {
-          if (item.id !== leaderUserId) {
-            return { ...acc, [item.id]: { ...item, score: item.score + 1 } };
+        // ктото угадал карту ведущего
+        data = dataResultPage.map((item) => {
+          if (item.id === leaderUserId) {
+            return {
+              id: item.id,
+              name: item.name,
+              count: item.votedId.length + 3,
+            };
           }
-          return { ...acc, [item.id]: item };
-        }, {});
+          return {
+            id: item.id,
+            name: item.name,
+            count: votedCards[item.id] === selectedCards[leaderUserId] ? 3 : 0,
+          };
+        });
       }
+    } else if (leaderUserId && !idUserSelectedCard.includes(leaderUserId)) {
+      // никто не угадал карту ведущего
+      data = dataResultPage.map((item) => {
+        if (item.id === leaderUserId) {
+          return {
+            id: item.id,
+            name: item.name,
+            count: 0,
+          };
+        }
+        return {
+          id: item.id,
+          name: item.name,
+          count: item.votedId.length !== 0 ? 1 : 0,
+        };
+      });
     }
     setLocalData(data);
-    dispatch(updatePlayersRound(data));
-  }, [leaderUserId, players]);
+  }, [dataResultPage, leaderUserId]);
 
   const handleClickButton = () => {
     if (playersId.length) {
       dispatch(updateLeaderUserId({ id: playersId[0] }));
+      dispatch(filtersCardUsers({ data: selectedCards }));
+      dispatch(resetSelectedCardUser());
+      dispatch(resetVotedCardUser());
       navigate('/game/round-intro-leading');
-      const data = Object.values(players).reduce(
-        (acc, item) => ({ ...acc, [item.id]: { ...item, selectedCardId: null, votedCardId: null } }),
-        {},
-      );
-      dispatch(updatePlayers(data));
     }
   };
 
