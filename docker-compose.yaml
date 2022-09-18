@@ -5,11 +5,13 @@ services:
     container_name: front-back
     image: vladburnaev/imadjinarium
     environment:
-      - PORT=80
+      - PORT=1234
     ports:
-      - 8080:80
+      - 1234:1234
     networks:
       - containers_network
+    depends_on:
+      - postgres
 
   postgres:
     container_name: postgres_imadjinarium
