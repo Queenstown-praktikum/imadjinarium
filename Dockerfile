@@ -10,5 +10,4 @@ RUN npm install
 RUN npm run build:client:ssr
 
 CMD npm run start:server
-CMD psql
 
