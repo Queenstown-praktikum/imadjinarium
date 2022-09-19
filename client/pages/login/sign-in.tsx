@@ -6,6 +6,8 @@ import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
 // import useCheckUser from './hooks/useCheckUser';
 import styles from './login.scss'
 
+const CLIENT_ID = 'efbd80d3b54741c8bb58dea7f4455561'
+
 export const SignInPage: FC = () => {
   const [signInUser, { data, isError, error }] = useUserSignInMutation()
   const [loginData, setLoginData] = useState({login: '', password: ''})
@@ -22,6 +24,14 @@ export const SignInPage: FC = () => {
     await signInUser(loginData)
   }
 
+  const handleYaSingInUser = useCallback(() => {
+    navigate('/login/ya-sign-in')
+
+    if (window) {
+      window.open(`https://oauth.yandex.ru/authorize?response_type=code&client_id=${CLIENT_ID}`, 'blank')
+    }
+  }, [navigate])
+
   const setLoginField = useCallback((name: string, value: string) => {
     setLoginData({
       ...loginData,
@@ -33,6 +43,10 @@ export const SignInPage: FC = () => {
     styleType: 'main',
     label: 'Войти',
     action: handleSignInUser,
+  }, {
+    label: 'Вход с помощью Яндекса',
+    action: handleYaSingInUser,
+    buttonClass: styles.authYa,
   }]
 
   return <div className={styles.login_form}>
