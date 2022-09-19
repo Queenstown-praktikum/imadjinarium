@@ -3,10 +3,10 @@ const { Sequelize } = require('sequelize');
 // todo: вынести в env file и добавить в docker-compose
 const sequelize = new Sequelize({
   dialect: 'postgres',
-  host: 'localhost',
+  host: 'postgres_imadjinarium',
   username: 'queenstown',
   password: 'queenstown',
-  port: 5002,
+  port: 5432,
   database: 'postgres_imadjinarium',
   dialectOptions: {
     ssl: false,
