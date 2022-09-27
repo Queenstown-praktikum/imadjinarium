@@ -2,6 +2,8 @@
 // Please do not change this file!
 interface CssExports {
   'instruction__leading-block': string;
+  'modal-choice': string;
+  'modal-choice__title': string;
   'round-intro': string;
   'round-intro__block-control': string;
   'round-intro__button': string;

@@ -5,7 +5,7 @@ import styles from './player-selection.scss';
 // import { useHandOutCards } from './useHandOutCards';
 // import { Input } from '../../ui-kit/input/input';
 import { Modal } from '../../ui-kit/modal/modal';
-import { StatusPanel } from '../../features/status-panel/status-panel';
+// import { StatusPanel } from '../../features/status-panel/status-panel';
 // import { Cards } from '../../features/cards/cards';
 
 export const PlayerSelectionPage: FC = () => {
@@ -35,7 +35,8 @@ export const PlayerSelectionPage: FC = () => {
       </div>
       {showModal && (
         <Modal>
-          <StatusPanel title='Ждем остальных игроков' />
+          <div />
+          {/* <StatusPanel title='Ждем остальных игроков' /> */}
         </Modal>
       )}
     </>

@@ -21,6 +21,12 @@ export type DataUserResultPage = {
   votedId: number[];
 };
 
+export type DataUserGameProps = {
+  id: number;
+  name: string;
+  count: number;
+};
+
 type StateType = {
   dataUser: DataUserProps; // данные игроков после инициализации
   leaderUserId: number | null; // id ведущего
@@ -29,7 +35,7 @@ type StateType = {
   votedCards: Record<number, number | null>; // выбранные карты
   playersId: number[]; // тут лежат id всех игроков
   dataResultPage: DataUserResultPage[]; // тут данные страницы result-round
-
+  dataResultGame: DataUserGameProps[];
   round: number;
 
   selectedCardId: Record<number, number>;
@@ -44,9 +50,10 @@ const initialState: StateType = {
   selectedCards: {},
   votedCards: {},
   dataResultPage: [],
-
   round: 1,
   playersId: [],
+  dataResultGame: [],
+
   selectedCardId: {},
   votedCardId: {},
   playersRound: {},
@@ -56,12 +63,17 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
+    updateDataResultGame: (state: StateType, action: PayloadAction<{ data: DataUserGameProps[] }>) => {
+      state.dataResultGame = action.payload.data;
+    },
     setDataUser: (state: StateType, action: PayloadAction<{ data: DataUserProps }>) => {
       state.dataUser = action.payload.data;
     },
-    updateLeaderUserId: (state: StateType, action: PayloadAction<{ id: number }>) => {
+    updateLeaderUserId: (state: StateType, action: PayloadAction<{ id: number | null }>) => {
       state.leaderUserId = action.payload.id;
-      state.playersId = state.playersId.filter((item) => item !== action.payload.id);
+      if (action.payload.id !== null) {
+        state.playersId = state.playersId.filter((item) => item !== action.payload.id);
+      }
     },
     updateAssociationText: (state: StateType, action: PayloadAction<{ text: string }>) => {
       state.associationText = action.payload.text;
@@ -139,6 +151,7 @@ const {
     setDataResultPage,
     resetDataResultPage,
     filtersCardUsers,
+    updateDataResultGame,
   },
 } = gameSlice;
 
@@ -159,6 +172,7 @@ export {
   setDataResultPage,
   resetDataResultPage,
   filtersCardUsers,
+  updateDataResultGame,
 };
 
 export const gameSelectors = {
@@ -169,8 +183,9 @@ export const gameSelectors = {
   selectedCards: (s: ApplicationState) => s.game.selectedCards,
   votedCards: (s: ApplicationState) => s.game.votedCards,
   dataResultPage: (s: ApplicationState) => s.game.dataResultPage,
-
   round: (s: ApplicationState) => s.game.round,
+  dataUserGame: (s: ApplicationState) => s.game.dataResultGame,
+
   selectedCardId: (s: ApplicationState) => s.game.selectedCardId,
   votedCardId: (s: ApplicationState) => s.game.votedCardId,
   playersRound: (s: ApplicationState) => s.game.playersRound,

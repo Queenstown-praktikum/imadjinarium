@@ -66,5 +66,19 @@
 }
 
 .instruction__leading-block {
-  margin-top: 20px;
+  margin: 20px auto 0;
+}
+
+.modal-choice {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+
+  &__title {
+    font-size: 18px;
+    line-height: 20px;
+
+  }
 }

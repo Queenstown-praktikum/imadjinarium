@@ -1,6 +1,7 @@
 .cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   grid-gap: 16px;
   margin-top: 20px;
   width: 100%;
@@ -8,4 +9,9 @@
 
 .card {
   height: 341px;
+  width: 220px;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
 }

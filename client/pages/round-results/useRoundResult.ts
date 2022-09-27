@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 // import { playersSelectors, PlayerType } from '../../redux/slices/players';
 import { gameSelectors, ItemDataUserProps } from '../../redux/slices/game';
+import { userSelectors } from '../../redux/slices/user';
 // import { userSelectors } from '../../redux/slices/user';
 // import { useAppDispatch } from '../../hooks/redux';
 
@@ -14,9 +15,9 @@ type DataProps = {
 
 export const useRoundResult = () => {
   // const dispatch = useAppDispatch();
+  const user = useSelector(userSelectors.user);
   const leaderUserId = useSelector(gameSelectors.leaderUserId);
   const associationText = useSelector(gameSelectors.associationText);
-
   const dataUser = useSelector(gameSelectors.dataUser);
   const selectedCards = useSelector(gameSelectors.selectedCards);
   const votedCards = useSelector(gameSelectors.votedCards);
@@ -40,7 +41,7 @@ export const useRoundResult = () => {
       return {
         id: item.id,
         idCard: selectedCards[item.id],
-        name: leadPlayer.id === item.id ? 'Ваша карта' : item.name,
+        name: user.id === item.id ? 'Ваша карта' : item.name,
         votedId: localValeId,
       };
     });
@@ -49,7 +50,7 @@ export const useRoundResult = () => {
   }, [dataUser, selectedCards, votedCards, leadPlayer]);
 
   useEffect(() => {
-    if (!leaderUserId) return;
+    if (leaderUserId === null) return;
     setLeadPlayer(dataUser[leaderUserId]);
   }, [dataUser, leaderUserId]);
 

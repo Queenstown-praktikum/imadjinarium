@@ -23,6 +23,11 @@ const ProtectedRouter = ({ isLogin, children }: { isLogin: boolean; children: an
   return children;
 };
 
+export type RoundsProps = {
+  current: number;
+  all: number;
+};
+
 export const Routing = () => {
   const user = useSelector(userSelectors.user);
   return (
