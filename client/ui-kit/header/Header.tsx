@@ -7,23 +7,30 @@ import styles from './header.scss';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { useLogoutMutation } from '../../redux/userApi';
 import { clearUserData } from '../../redux/slices/user';
+import { useFullscreen } from '../../hooks/fullscreen';
+import { useAudio } from '../../hooks/audio';
 
 interface HeaderProps {
   avatarUrl: string;
 }
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
+  const toggleFullscreen = useFullscreen();
+  const {playing, toggleAudio} = useAudio();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [logout] = useLogoutMutation();
   const user = useAppSelector((s) => s.user);
+
   const goToProfile = useCallback(() => {
-    navigate('/login');
+    navigate('/login/profile');
   }, [navigate]);
+
   const handleLogout = () => {
     logout({});
     dispatch(clearUserData());
   };
+
   const { avatarUrl } = props;
   return (
     <header className={styles.header}>
@@ -35,14 +42,18 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
       <Link to='/'>
         <Logo className={styles.header_logo} />
       </Link>
-      <Link to='rules' className={styles.header__link}>
-        Правила
-      </Link>
-      {user.id && (
-        <div className={styles.header__link} onClick={handleLogout}>
-          Выход
-        </div>
-      )}
+      <div className={styles.header_menu}>
+        <Link to='rules' className={styles.header__link}>
+          Правила
+        </Link>
+        {user.id && (
+          <div className={styles.header__link} onClick={handleLogout}>
+            Выход
+          </div>
+        )}
+        <div onClick={toggleFullscreen}>FS</div>
+        <div onClick={toggleAudio}>{playing ? 'Pause' : 'Play'}</div>
+      </div>
     </header>
   );
 };

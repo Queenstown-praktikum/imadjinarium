@@ -7,10 +7,12 @@ import { userApi } from './userApi';
 import { topicApi } from './topicApi';
 import { gameReducer } from './slices/game';
 import { botsReducer } from './slices/bots';
+import { leaderboardApi } from './leaderboardApi';
 
 export const reducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   [topicApi.reducerPath]: topicApi.reducer,
+  [leaderboardApi.reducerPath]: leaderboardApi.reducer,
   bots: botsReducer,
   user: userReducer,
   cards: cardsReducer,
