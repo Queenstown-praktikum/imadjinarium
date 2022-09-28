@@ -18,7 +18,7 @@ import { userSelectors } from '../../redux/slices/user';
 const ProtectedRouter = ({ isLogin, children }: { isLogin: boolean; children: any }) => {
   const navigate = useNavigate();
   if (!isLogin) {
-    return navigate('/');
+    return navigate('/login/');
   }
   return children;
 };
@@ -39,7 +39,7 @@ export const Routing = () => {
         <Route
           path='game/*'
           element={
-            <ProtectedRouter isLogin={Boolean(user.id)}>
+            <ProtectedRouter isLogin={Boolean(user?.id)}>
               <Routes>
                 <Route path='initial' element={<InitialPage />} />
                 <Route path='forum' element={<Forum />} />

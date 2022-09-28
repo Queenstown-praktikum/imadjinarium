@@ -8,7 +8,7 @@ import config from '../../../webpackConfig/webpack.base.conf.js';
 import { render } from './render';
 
 const compiler = webpack({ ...config, mode: 'development' });
-
+console.log('MIDDLEWARE');
 export default [
   devMiddleware(compiler, { serverSideRender: true, index: false, publicPath: config.output.publicPath }),
   hotMiddleware(compiler, {
