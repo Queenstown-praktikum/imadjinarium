@@ -6,6 +6,7 @@ interface CssExports {
   'avatar_token': string;
   'login': string;
   'login_form': string;
+  'profile_line': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

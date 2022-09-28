@@ -6,3 +6,7 @@ export type RowProps = {
   login: string;
   score: number;
 };
+
+export type DataProps = {
+  data: RowProps;
+}
