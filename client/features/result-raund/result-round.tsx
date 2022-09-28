@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'ui-kit';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 import styles from './result-round.scss';
 import { useResultRound } from './useResultRound';
 import { ItemResult } from './subComponents/item-result';
 import { DataUserGameProps } from '../../redux/slices/game';
 import { ItemFinish } from './subComponents/item-finish';
+import { useLeaderboardSetScoreMutation } from '../../redux/leaderboardApi';
+import { userSelectors } from '../../redux/slices/user';
 
 type ResultRoundProps = {};
 
 export const ResultRound: React.FC<ResultRoundProps> = () => {
   const { showModalFinish, data, handleClickButton, playersId } = useResultRound();
+  const currentUser = useSelector(userSelectors.user);
+
+  const [setScore] = useLeaderboardSetScoreMutation();
   const [dataLead, setDataLead] = useState<DataUserGameProps[]>([]);
   const navigate = useNavigate();
   const showTextButton = () => {
@@ -29,7 +35,15 @@ export const ResultRound: React.FC<ResultRoundProps> = () => {
     const dataLeaders = data.filter((item) => item.count === countLeader);
 
     setDataLead(dataLeaders);
-  }, [showModalFinish]);
+
+    const scoreData = data.find((item) => item.id === currentUser.id);
+    setScore({
+      id: currentUser.id,
+      login: currentUser.login,
+      avatar: currentUser.avatar,
+      score: scoreData?.count || 0,
+    })
+  }, [showModalFinish, currentUser, setScore, data]);
 
   const handleFinishButton = () => {
     navigate('/');
