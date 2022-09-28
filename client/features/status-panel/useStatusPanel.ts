@@ -35,6 +35,7 @@ export const useStatusPanel = (p: { close: () => void; mode?: 'vote' }) => {
       if (mass.length === Object.values(dataUser).length) {
         Object.values(dataUser).forEach((item, idx) => {
           const _mass = mass.filter((item) => leaderUserId !== null && selectedCards[leaderUserId] !== item);
+          console.log({ _mass });
           if (p.mode === 'vote' && user.id !== item.id) {
             setTimeout(() => {
               dispatch(setVotedCardUser({ idUser: item.id, idCard: randomItem(_mass) }));

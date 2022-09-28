@@ -30,9 +30,9 @@ export const useRoundResult = () => {
 
     const localData: DataProps[] = Object.values(dataUser).map((item) => {
       const localValeId: number[] = [];
-
       Object.entries(votedCards).forEach(([key, itemCard]) => {
         const keyCard = Number(key);
+
         if (selectedCards[item.id] === itemCard) {
           localValeId.push(keyCard);
         }
@@ -53,6 +53,6 @@ export const useRoundResult = () => {
     if (leaderUserId === null) return;
     setLeadPlayer(dataUser[leaderUserId]);
   }, [dataUser, leaderUserId]);
-
+  console.log('****', data);
   return { data, leadPlayer, associationText };
 };
