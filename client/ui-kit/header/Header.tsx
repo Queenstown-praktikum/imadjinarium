@@ -16,7 +16,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const toggleFullscreen = useFullscreen();
-  const {playing, toggleAudio} = useAudio();
+  const { playing, toggleAudio } = useAudio();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [logout] = useLogoutMutation();

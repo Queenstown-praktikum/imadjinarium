@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 export const useAudio = () => {
+  if (typeof window === 'undefined') return { toggleAudio: () => {}, playing: false };
   const [audio] = useState(new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3'));
   const [playing, setPlaying] = useState(false);
 
@@ -8,9 +9,9 @@ export const useAudio = () => {
 
   useEffect(() => {
     if (playing) {
-      audio.play()
+      audio.play();
     } else {
-      audio.pause()
+      audio.pause();
     }
   }, [playing, audio]);
 
@@ -21,5 +22,5 @@ export const useAudio = () => {
     };
   }, []);
 
-  return {playing, toggleAudio};
+  return { playing, toggleAudio };
 };

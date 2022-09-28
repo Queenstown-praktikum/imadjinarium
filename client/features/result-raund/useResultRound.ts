@@ -8,6 +8,7 @@ import {
   gameSelectors,
   resetSelectedCardUser,
   resetVotedCardUser,
+  setDataUser,
   updateAssociationText,
   updateDataResultGame,
   updateLeaderUserId,
@@ -108,7 +109,10 @@ export const useResultRound = () => {
 
   const handleClickButton = () => {
     if (showModalFinish) {
+      // Завершение игры
       // Сброс всех значений
+      dispatch(setDataUser({ data: {} }));
+      dispatch(updateDataResultGame({ data: [] }));
       dispatch(updateLeaderUserId({ id: null }));
       dispatch(filtersCardUsers({ data: {} }));
       dispatch(resetSelectedCardUser());
@@ -118,6 +122,7 @@ export const useResultRound = () => {
       navigate('/game/initial');
     } else if (playersId.length) {
       // Сбрасываем все
+      dispatch(updateDataResultGame({ data: [] }));
       dispatch(updateLeaderUserId({ id: playersId[0] }));
       dispatch(filtersCardUsers({ data: selectedCards }));
       dispatch(resetSelectedCardUser());

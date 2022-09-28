@@ -5,15 +5,27 @@ import { useSelector } from 'react-redux';
 import styles from './result-round.scss';
 import { useResultRound } from './useResultRound';
 import { ItemResult } from './subComponents/item-result';
-import { DataUserGameProps } from '../../redux/slices/game';
+import {
+  DataUserGameProps,
+  filtersCardUsers,
+  resetSelectedCardUser,
+  resetVotedCardUser,
+  setDataUser,
+  updateAssociationText,
+  updateDataResultGame,
+  updateLeaderUserId,
+  updateRound,
+} from '../../redux/slices/game';
 import { ItemFinish } from './subComponents/item-finish';
 import { useLeaderboardSetScoreMutation } from '../../redux/leaderboardApi';
 import { userSelectors } from '../../redux/slices/user';
+import { useAppDispatch } from '../../hooks/redux';
 
 type ResultRoundProps = {};
 
 export const ResultRound: React.FC<ResultRoundProps> = () => {
   const { showModalFinish, data, handleClickButton, playersId } = useResultRound();
+  const dispatch = useAppDispatch();
   const currentUser = useSelector(userSelectors.user);
 
   const [setScore] = useLeaderboardSetScoreMutation();
@@ -42,10 +54,18 @@ export const ResultRound: React.FC<ResultRoundProps> = () => {
       login: currentUser.login,
       avatar: currentUser.avatar,
       score: scoreData?.count || 0,
-    })
+    });
   }, [showModalFinish, currentUser, setScore, data]);
 
   const handleFinishButton = () => {
+    dispatch(setDataUser({ data: {} }));
+    dispatch(updateDataResultGame({ data: [] }));
+    dispatch(updateLeaderUserId({ id: null }));
+    dispatch(filtersCardUsers({ data: {} }));
+    dispatch(resetSelectedCardUser());
+    dispatch(resetVotedCardUser());
+    dispatch(updateRound({ round: 1 }));
+    dispatch(updateAssociationText({ text: '' }));
     navigate('/');
   };
 

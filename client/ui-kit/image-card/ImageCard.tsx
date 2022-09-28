@@ -15,15 +15,21 @@ type Props = {
 
 const ImageCard: FC<Props> = ({ imageUrl, labelUrl, caption, dataIdSelected }) => {
   const dataUser = useSelector(gameSelectors.dataUser);
-
   return (
     <div className={styles['image-card']} style={{ backgroundImage: convertImageUrlToCssUrl(imageUrl) }}>
       {dataIdSelected?.length
         ? dataIdSelected?.map((id) => (
             <div className={styles['image-card__label']}>
-              {dataUser[id]?.avatar?.length === 0 ? (
+              {dataUser[id]?.avatar === null || dataUser[id]?.avatar?.length === 0 ? (
                 <div className={styles['image-card__voted-info']}>
-                  <img className={styles['image-card__avatar']} src={dataUser[id]?.avatar || 'https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg'} alt='Аватар' />
+                  <img
+                    className={styles['image-card__avatar']}
+                    src={
+                      dataUser[id]?.avatar ||
+                      'https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg'
+                    }
+                    alt='Аватар'
+                  />
                   <span className={styles['image-card__voted-name']}>{dataUser[id]?.name}</span>
                 </div>
               ) : (
