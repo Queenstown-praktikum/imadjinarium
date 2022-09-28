@@ -37,9 +37,7 @@ export const userApi = createApi({
       }),
     }),
     changeAvatar: build.mutation({
-      query: (body) => {
-        console.log('check body', body);
-        return {
+      query: (body) => ({
           url: '/user/profile/avatar',
           method: 'PUT',
           body,
@@ -47,8 +45,7 @@ export const userApi = createApi({
             accept: 'application/json',
             'Content-Type': 'multipart/form-data',
           },
-        };
-      },
+        }),
     }),
     logout: build.mutation({
       query: () => ({

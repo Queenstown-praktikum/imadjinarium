@@ -1,38 +1,32 @@
 import React, { FC } from 'react';
-import { FormWrapper, TextField } from '../../ui-kit';
+import { useSelector } from 'react-redux';
+import { userSelectors } from '../../redux/slices/user';
+import { FormWrapper } from '../../ui-kit';
 import Avatar from './avatar';
 import styles from './login.scss';
 
-export const ProfilePage: FC = () => (
-  <div className={styles.login_form}>
+export const ProfilePage: FC = () => {
+  const user = useSelector(userSelectors.user);
+  return <div className={styles.login_form}>
     <Avatar />
     <FormWrapper
       title='Профиль'
       buttons={[]}
-      // TODO(Egor) типизировать ошибки в userApi (пока не знаю как)
-      // и локализовать ошибки (пока на англ)
-      // @ts-ignore
-      // formError={isError && error?.data?.reason}
     >
       <>
-        <TextField
-          name='login'
-          label='Логин'
-          // onTextFieldChange={setRegistrationField}
-        />
-
-        <TextField
-          name='email'
-          label='Почта'
-          // onTextFieldChange={setRegistrationField}
-        />
-
-        <TextField
-          name='phone'
-          label='Телефон'
-          // onTextFieldChange={setRegistrationField}
-        />
+        <div className={styles.profile_line}>
+          <span>Логин</span>
+          <span>{user.login}</span>
+        </div>
+        <div className={styles.profile_line}>
+          <span>Почта</span>
+          <span>{user.email}</span>
+        </div>
+        <div className={styles.profile_line}>
+          <span>Телефон</span>
+          <span>{user.phone}</span>
+        </div>
       </>
     </FormWrapper>
   </div>
-);
+};

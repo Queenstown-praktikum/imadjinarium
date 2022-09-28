@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const user = useAppSelector((s) => s.user);
 
   const goToProfile = useCallback(() => {
-    navigate('/login');
+    navigate('/login/profile');
   }, [navigate]);
 
   const handleLogout = () => {
