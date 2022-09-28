@@ -10,7 +10,7 @@ type ItemResultProps = {
 export const ItemResult: FC<ItemResultProps> = ({ name, count, finish }) => (
   <div className={styles['item-result']}>
     <div className={styles['item-result__header']}>
-      <img className={styles['item-result__avatar']} src='' alt='Аватар' />
+      <img className={styles['item-result__avatar']} src='https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg' alt='Аватар' />
       <p className={styles['item-result__name']}>
         {finish ? (
           <>

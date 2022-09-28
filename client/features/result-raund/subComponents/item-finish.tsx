@@ -9,7 +9,7 @@ type ItemFinishProps = {
 export const ItemFinish: React.FC<ItemFinishProps> = ({ name }) => (
     <div className={cn(styles['item-result'], styles['item-finish'])}>
       <div className={styles['item-result__header']}>
-        <img className={styles['item-result__avatar']} src='' alt='Аватар' />
+        <img className={styles['item-result__avatar']} src='https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg' alt='Аватар' />
         <p className={styles['item-result__name']}>{name}</p>
       </div>
     </div>
