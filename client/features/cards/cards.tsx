@@ -2,12 +2,9 @@ import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { ImageCard } from 'ui-kit';
 import cn from 'classnames'
 import styles from './cards.scss';
-import { UserDataProps } from '../../redux/slices/cards';
-import { IUser } from '../../redux/slices/user';
 
 type CardsProps = {
-  data: UserDataProps;
-  user: IUser;
+  data: number[];
   choiceCard: (value: number) => void;
 };
 
@@ -24,7 +21,7 @@ const CartList = ({id, choiceCard, choisenId}: {id: number, choisenId: number, c
 }
   /* eslint-disable-next-line */
 
-const Canvas: FC<CardsProps> = ({data, user, choiceCard}) => {
+const Canvas: FC<CardsProps> = ({data, choiceCard}) => {
   const cardsRef = useRef<HTMLCanvasElement>(null);
 
   const draw = useCallback((context: any, id: number, index: number) => {
@@ -39,21 +36,21 @@ const Canvas: FC<CardsProps> = ({data, user, choiceCard}) => {
   useEffect(() => {
     const context = cardsRef.current?.getContext('2d')
 
-    data?.[user?.id]?.map((id, index) => draw(context, id, index))
-  }, [data, user, draw])
+    data.map((id, index) => draw(context, id, index))
+  }, [data, draw])
 
   const handleClick = useCallback((e: any) => {
     const offsite = e.target.getBoundingClientRect().x
     const positionInsiteCanvas = e.clientX - offsite
     const getIndex = Math.floor(positionInsiteCanvas / 225)
-    const getId = data?.[user?.id][getIndex]
+    const getId = data[getIndex]
     choiceCard(getId)
-  }, [choiceCard, data, user])
+  }, [choiceCard, data])
 
   return <canvas onClick={handleClick} ref={cardsRef} className={styles.canvas} />
 }
 
-export const Cards: FC<CardsProps> = ({ data, user, choiceCard }) => {
+export const Cards: FC<CardsProps> = ({ data, choiceCard }) => {
   const [useCanvas, setUseCanvas] = useState(false)
   const [choisenId, setChoisenId] = useState<number>()
 
@@ -65,13 +62,13 @@ export const Cards: FC<CardsProps> = ({ data, user, choiceCard }) => {
   if (useCanvas) {
     return <>
       <div onClick={() => setUseCanvas(false)}>switch to image</div>
-      <Canvas {...{data, user, choiceCard: handleChoise}} />
+      <Canvas {...{data, choiceCard: handleChoise}} />
     </>
   }
 
   return <>
     <div onClick={() => setUseCanvas(true)}>switch to canvas</div>
-    <ul className={styles.cards}>{data?.[user?.id]?.map((id) => <CartList
+    <ul className={styles.cards}>{data.map((id) => <CartList
       id={id}
       choiceCard={handleChoise}
       choisenId={choisenId!}

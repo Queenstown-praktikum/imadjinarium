@@ -26,10 +26,14 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     navigate('/login/profile');
   }, [navigate]);
 
-  const handleLogout = () => {
-    logout({});
-    dispatch(clearUserData());
-  };
+  const handleLogout = useCallback(() => {
+    if (!user.id) {
+      navigate('/login');
+    } else {
+      logout({});
+      dispatch(clearUserData());
+    }
+  }, [user, navigate, logout, dispatch]);
 
   const { avatarUrl } = props;
   return (
@@ -46,11 +50,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         <Link to='rules' className={styles.header__link}>
           Правила
         </Link>
-        {user.id && (
-          <div className={styles.header__link} onClick={handleLogout}>
-            Выход
-          </div>
-        )}
+        <div className={styles.header__link} onClick={handleLogout}>
+          {!user.id ? 'Вход' : 'Выход'}
+        </div>
         <div onClick={toggleFullscreen}>FS</div>
         <div onClick={toggleAudio}>{playing ? 'Pause' : 'Play'}</div>
       </div>

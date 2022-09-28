@@ -23,6 +23,11 @@ const ProtectedRouter = ({ isLogin, children }: { isLogin: boolean; children: an
   return children;
 };
 
+export type RoundsProps = {
+  current: number;
+  all: number;
+};
+
 export const Routing = () => {
   const user = useSelector(userSelectors.user);
   return (
@@ -41,14 +46,8 @@ export const Routing = () => {
                 <Route path='leaderboard' element={<LeaderBoard />} />
                 <Route path='player-selection' element={<PlayerSelectionPage />} />
 
-                <Route
-                  path='round-intro-leading'
-                  element={<RoundIntroPage rounds={{ current: 1, all: 3 }} userRole='leading' />}
-                />
-                <Route
-                  path='round-intro-player'
-                  element={<RoundIntroPage rounds={{ current: 2, all: 3 }} userRole='player' />}
-                />
+                <Route path='round-intro-leading' element={<RoundIntroPage rounds={{ current: 1, all: 3 }} />} />
+                <Route path='round-intro-player' element={<RoundIntroPage rounds={{ current: 2, all: 3 }} />} />
                 <Route path='round-results' element={<RoundResultsPage />} />
               </Routes>
             </ProtectedRouter>

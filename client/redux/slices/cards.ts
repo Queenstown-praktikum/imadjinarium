@@ -29,15 +29,19 @@ const cardsSlice = createSlice({
       ...state,
       user_data: { ...state.user_data, [action.payload.id]: [...action.payload.data] },
     }),
+    updateCards: (state: StateType, action: PayloadAction<{ data: number[] }>) => ({
+      ...state,
+      data: action.payload.data,
+    }),
   },
 });
 
 const {
   reducer: cardsReducer,
-  actions: { removeUsedCards, setUserCards },
+  actions: { removeUsedCards, setUserCards, updateCards },
 } = cardsSlice;
 
-export { cardsReducer, removeUsedCards, setUserCards };
+export { cardsReducer, removeUsedCards, setUserCards, updateCards };
 
 export const cardsSelectors = {
   cardsAll: (s: ApplicationState) => s.cards.data,

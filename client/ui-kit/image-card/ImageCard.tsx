@@ -3,7 +3,8 @@ import { PlayerToken } from 'ui-kit';
 import { useSelector } from 'react-redux';
 import styles from './image-card.scss';
 import { convertImageUrlToCssUrl } from '../../utils/url';
-import { playersSelectors } from '../../redux/slices/players';
+// import { playersSelectors } from '../../redux/slices/players';
+import { gameSelectors } from '../../redux/slices/game';
 
 type Props = {
   imageUrl: string;
@@ -13,17 +14,17 @@ type Props = {
 };
 
 const ImageCard: FC<Props> = ({ imageUrl, labelUrl, caption, dataIdSelected }) => {
-  const players = useSelector(playersSelectors.players);
+  const dataUser = useSelector(gameSelectors.dataUser);
 
   return (
     <div className={styles['image-card']} style={{ backgroundImage: convertImageUrlToCssUrl(imageUrl) }}>
       {dataIdSelected?.length
         ? dataIdSelected?.map((id) => (
             <div className={styles['image-card__label']}>
-              {players[id].avatar.length === 0 ? (
+              {dataUser[id].avatar.length === 0 ? (
                 <div className={styles['image-card__voted-info']}>
-                  <img className={styles['image-card__avatar']} src={players[id].avatar} alt="Аватар" />
-                  <span className={styles['image-card__voted-name']}>{players[id].name}</span>
+                  <img className={styles['image-card__avatar']} src={dataUser[id].avatar || 'https://image.shutterstock.com/image-vector/elephant-icon-260nw-574537432.jpg'} alt='Аватар' />
+                  <span className={styles['image-card__voted-name']}>{dataUser[id].name}</span>
                 </div>
               ) : (
                 labelUrl && <PlayerToken imageUrl={labelUrl} />

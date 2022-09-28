@@ -6,6 +6,8 @@ import { LeadingBlock } from './leading-block/leading-block';
 import { useRoundResult } from './useRoundResult';
 import { Modal } from '../../ui-kit/modal/modal';
 import { ResultRound } from '../../features/result-raund/result-round';
+import { setDataResultPage } from '../../redux/slices/game';
+import { useAppDispatch } from '../../hooks/redux';
 
 const cartList = (id: number, name: string, votedId: number[]) => (
   <li key={id} className={styles['round-results__card']}>
@@ -14,10 +16,13 @@ const cartList = (id: number, name: string, votedId: number[]) => (
 );
 
 export const RoundResultsPage: FC = () => {
+  const dispatch = useAppDispatch();
   const { data, leadPlayer, associationText } = useRoundResult();
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const handleClick = () => {
+    if (!data.length) return;
+    dispatch(setDataResultPage({ data }));
     setShowModal(true);
   };
 
