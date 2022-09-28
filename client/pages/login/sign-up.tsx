@@ -13,7 +13,6 @@ export const SignUpPage: FC = () => {
   const [regData, setRegData] = useState<any>({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log('dataUser', dataUser)
 
   useEffect(() => {
     if (data) {

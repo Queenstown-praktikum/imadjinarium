@@ -1,8 +1,8 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { userSelectors } from '../../redux/slices/user';
-import { useUserSignInMutation } from '../../redux/userApi';
+import { setUserData, userSelectors } from '../../redux/slices/user';
+import { useGetUserQuery, useUserSignInMutation } from '../../redux/userApi';
 import { FormWrapper, TextField } from '../../ui-kit';
 import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
 import styles from './login.scss'
@@ -12,14 +12,23 @@ const CLIENT_ID = 'efbd80d3b54741c8bb58dea7f4455561'
 export const SignInPage: FC = () => {
   const user = useSelector(userSelectors.user);
   const [signInUser, { data, isError, error }] = useUserSignInMutation()
+  const { data: dataUser } = useGetUserQuery({});
   const [loginData, setLoginData] = useState({login: '', password: ''})
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (data === 'OK' || user.id) {
       navigate('/')
     }
   }, [data, navigate, user])
+
+  useEffect(() => {
+    if (dataUser) {
+      dispatch(setUserData(dataUser))
+    }
+  }, [dataUser, dispatch]);
 
   const handleSignInUser = async () => {
     await signInUser(loginData)

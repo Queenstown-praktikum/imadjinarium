@@ -1,11 +1,21 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { userSelectors } from '../../redux/slices/user';
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserData, userSelectors } from '../../redux/slices/user';
+import { useGetUserQuery } from '../../redux/userApi';
 import { FormWrapper } from '../../ui-kit';
 import Avatar from './avatar';
 import styles from './login.scss';
 
 export const ProfilePage: FC = () => {
+  const { data: dataUser } = useGetUserQuery({});
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (dataUser) {
+      dispatch(setUserData(dataUser))
+    }
+  }, [dataUser, dispatch]);
+
   const user = useSelector(userSelectors.user);
   return <div className={styles.login_form}>
     <Avatar />
