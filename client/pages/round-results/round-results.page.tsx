@@ -11,7 +11,7 @@ import { useAppDispatch } from '../../hooks/redux';
 
 const cartList = (id: number, name: string, votedId: number[]) => (
   <li key={id} className={styles['round-results__card']}>
-    <ImageCard imageUrl={`/image-cards/${id}.jpeg`} caption={name} dataIdSelected={votedId} />
+    <ImageCard imageUrl={`/image-cards/${id}.jpg`} caption={name} dataIdSelected={votedId} />
   </li>
 );
 

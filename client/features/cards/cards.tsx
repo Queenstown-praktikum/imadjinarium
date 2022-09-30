@@ -16,7 +16,7 @@ const CartList = ({id, choiceCard, choisenId}: {id: number, choisenId: number, c
     className={cn(choisenId === id && styles.card__choisen, styles.card)}
     onClick={handleClick}
   >
-    <ImageCard imageUrl={`/image-cards/${id}.jpeg`} />
+    <ImageCard imageUrl={`/image-cards/${id}.jpg`} />
   </li>
 }
   /* eslint-disable-next-line */
@@ -26,7 +26,7 @@ const Canvas: FC<CardsProps> = ({data, choiceCard}) => {
 
   const draw = useCallback((context: any, id: number, index: number) => {
     const img = new Image()
-    img.src = `/image-cards/${id}.jpeg`
+    img.src = `/image-cards/${id}.jpg`
 
     img.onload = () => {
       context.drawImage(img, 0, 0, 466, 692, index*50, 0, 50, 150)
