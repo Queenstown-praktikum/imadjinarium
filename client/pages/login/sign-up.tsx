@@ -1,25 +1,33 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { FormWrapper, TextField } from '../../ui-kit';
 import { WrapperButtonType } from '../../ui-kit/formWrapper/types';
 import { useGetUserQuery, useUserSignUpMutation } from '../../redux/userApi';
 import { setUserData } from '../../redux/slices/user';
 import styles from './login.scss';
-// import useCheckUser from './hooks/useCheckUser';
 
 export const SignUpPage: FC = () => {
   const [signUpUser, { data, isError, error }] = useUserSignUpMutation();
   const { data: dataUser } = useGetUserQuery({});
   const [regData, setRegData] = useState<any>({});
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log({ dataUser });
-  // useCheckUser()
   useEffect(() => {
     if (data) {
       dispatch(setUserData(data));
     }
-  }, [data, dispatch]);
+    if (dataUser) {
+      dispatch(setUserData(dataUser))
+    }
+  }, [data, dataUser, dispatch]);
+
+  useEffect(() => {
+    if (data === 'OK') {
+      navigate('/')
+    }
+  }, [data, navigate])
 
   const setRegistrationField = useCallback(
     (name: string, value: string) => {
@@ -32,7 +40,6 @@ export const SignUpPage: FC = () => {
   );
 
   const handleSignUpUser = useCallback(() => {
-    console.log(regData);
     // TODO(Egor) add check pass and re-pass
     signUpUser({
       first_name: regData.login,

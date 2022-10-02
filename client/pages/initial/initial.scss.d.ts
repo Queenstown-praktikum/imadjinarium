@@ -2,8 +2,11 @@
 // Please do not change this file!
 interface CssExports {
   'initial-page': string;
+  'initial-page__block-content': string;
   'initial-page__button': string;
+  'initial-page__label': string;
   'initial-page__players': string;
+  'initial-page__title': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

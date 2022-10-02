@@ -1,5 +1,25 @@
 .initial-page {
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__block-content {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__label {
+    display: block;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 40px 0 5px;
+  }
 
   &__players {
     margin-top: 50px;
@@ -8,6 +28,6 @@
   }
 
   &__button {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 }

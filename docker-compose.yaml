@@ -1,12 +1,17 @@
 version: '3'
 
 services:
-  server-app:
-    container_name: server-app
-    build:
-      context: ./server
+  app:
+    container_name: front-back
+    image: vladburnaev/imadjinarium
+    environment:
+      - PORT=1234
+    ports:
+      - 1234:1234
     networks:
       - containers_network
+    depends_on:
+      - postgres
 
   postgres:
     container_name: postgres_imadjinarium

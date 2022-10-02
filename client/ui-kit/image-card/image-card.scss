@@ -18,7 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 5px 10px;
+    background: var(--color-black-light);
     backdrop-filter: blur(40px);
     border-radius: 10px;
     margin: 5px 5px 0 0;

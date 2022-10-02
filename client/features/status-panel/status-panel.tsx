@@ -8,10 +8,13 @@ import { useStatusPanel } from './useStatusPanel';
 type StatusPanelProps = {
   title: string;
   button?: boolean;
+  close: () => void;
+  mode?: 'vote';
 };
 
-export const StatusPanel: FC<StatusPanelProps> = ({ title, button }) => {
-  const { data } = useStatusPanel();
+export const StatusPanel: FC<StatusPanelProps> = ({ title, button, close, mode }) => {
+  console.log({ close });
+  const { data } = useStatusPanel({ close, mode });
   return (
     <div className={cn(styles.sp)}>
       <div className={styles.sp__header}>

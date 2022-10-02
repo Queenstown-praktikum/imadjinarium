@@ -4,7 +4,7 @@ import { Button } from '../index';
 import styles from './form-wrapper.scss';
 import { FormWrapperProps } from './types';
 
-const FormWrapper: FC<PropsWithChildren<FormWrapperProps>> = (props: PropsWithChildren<FormWrapperProps>) => {
+const FormWrapper: FC<PropsWithChildren<FormWrapperProps>> = (props) => {
   const { children, title, buttons, formError, link } = props;
   return (
     <div className={styles.fw}>
@@ -19,8 +19,8 @@ const FormWrapper: FC<PropsWithChildren<FormWrapperProps>> = (props: PropsWithCh
       {children}
       <span className={styles.fw_formError}>{formError && formError}</span>
       <div className={styles.fw_buttons}>
-        {buttons.map(({ label, action }) => (
-          <Button key={label} primary label={label} onClick={action} />
+        {buttons.map(({ label, action, buttonClass }) => (
+          <Button key={label} primary label={label} onClick={action} buttonClass={buttonClass} />
         ))}
       </div>
     </div>
